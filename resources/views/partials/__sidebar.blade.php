@@ -1,6 +1,9 @@
 @php
     $navItems = [
         [
+            'name' => 'Menu',
+        ],
+        [
             'name' => 'Dashboard',
             'icon' => '<i class="bi bi-grid-fill"></i>',
             'active' => true,
@@ -8,30 +11,257 @@
         ],
         [
             'name' => 'Products',
-            'icon' => '<i class="bi bi-grid-fill"></i>',
+            'icon' => '  <i class="bi bi-stack"></i>',
             'active' => false,
             'url' => '/product',
             'child' => [
                 [
                     'name' => 'Add Product',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
                     'url' => '/product/add',
                 ],
                 [
                     'name' => 'Edit Product',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'icon' => '<i class="bi bi-pencil-fill"></i>',
                     'active' => false,
                     'url' => '/product/edit',
                 ],
                 [
                     'name' => 'Catagory',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'icon' => '<i class="bi bi-columns-gap"></i>',
                     'active' => false,
                     'url' => '/catagory',
                 ],
                 [
                     'name' => 'Brands',
+                    'icon' => '<i class="bi bi-box-fill"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Sales',
+            'icon' => '  <i class="bi bi-cart4"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'New Sale',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Manage Sale',
+                    'icon' => '<i class="bi bi-pencil-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Invoices',
+                    'icon' => '<i class="bi bi-receipt"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Returns',
+                    'icon' => '<i class="bi bi-arrow-clockwise"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Inventory',
+            'icon' => '<i class="bi bi-boxes"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'Current Inventory',
+                    'icon' => '<i class="bi bi-box2"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Reorder Management',
+                    'icon' => '<i class="bi bi-card-checklist"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Incoming Shipment',
+                    'icon' => '<i class="bi bi-arrow-down-circle"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Stock History',
+                    'icon' => '<i class="bi bi-clock"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Suppliers',
+            'icon' => '  <i class="bi bi-truck"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'Supplier List',
+                    'icon' => '<i class="bi bi-list-stars"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Add New',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Edit Supplier',
+                    'icon' => '<i class="bi bi-pencil-fill"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Supplier Orders',
+                    'icon' => '<i class="bi bi-list"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Customers',
+            'icon' => '  <i class="bi bi-person-circle"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'Customer List',
+                    'icon' => '<i class="bi bi-list-stars"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Customer Communication',
+                    'icon' => '<i class="bi bi-chat-dots"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Support Tickets',
+                    'icon' => '<i class="bi bi-ticket-detailed"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Customer Analytics',
+                    'icon' => '<i class="bi bi-file-earmark-person-fill"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Tasks & meeting',
+            'icon' => '  <i class="bi bi-calendar3"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'Task List',
+                    'icon' => '<i class="bi bi-card-list"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'New Task',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Meetings',
+                    'icon' => '<i class="bi bi-wechat"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Calendar',
+                    'icon' => '<i class="bi bi-calendar2"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Reports & Analytics',
+            'icon' => '  <i class="bi bi-cart4"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'Sale Reports',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Inventory Reports',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Customer Reports',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Custom Reports',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/brands',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Management',
+        ],
+        [
+            'name' => 'Settings',
+            'icon' => '  <i class="bi bi-cart4"></i>',
+            'active' => false,
+            'url' => '/product',
+            'child' => [
+                [
+                    'name' => 'User Management',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/add',
+                ],
+                [
+                    'name' => 'Company Information',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/product/edit',
+                ],
+                [
+                    'name' => 'Notification <br/> Preferences',
+                    'icon' => '<i class="bi bi-grid-fill"></i>',
+                    'active' => false,
+                    'url' => '/catagory',
+                ],
+                [
+                    'name' => 'Data Backup & Restore',
                     'icon' => '<i class="bi bi-grid-fill"></i>',
                     'active' => false,
                     'url' => '/brands',
@@ -88,45 +318,30 @@
                 {{-- navigation items  --}}
                 @foreach ($navItems as $nav)
                     @if (isset($nav['icon']))
-                        <li class="sidebar-item {{ $nav['active'] ? 'active' : '' }}">
-                            <a href="index.html" class="sidebar-link">
+                        <li
+                            class="sidebar-item {{ $nav['active'] ? 'active' : '' }} {{ isset($nav['child']) ? 'has-sub' : '' }} ">
+                            <a href="{{ $nav['url'] }}" class="sidebar-link">
                                 {!! $nav['icon'] !!}
-                                <span>{{ $nav['name']}}</span>
+                                <span>{{ $nav['name'] }}</span>
                             </a>
+                            {{-- check if sub menu available  --}}
+                            @if (isset($nav['child']))
+                                <ul class="submenu">
+                                    @foreach ($nav['child'] as $subNav)
+                                        <li class="submenu-item {{ $subNav['active'] ? 'active' : '' }}">
+                                            <a href="{{ $subNav['url'] }}" class="sidebar-link d-flex ">
+                                                {!! $subNav['icon'] !!}
+                                                <span>{{ $subNav['name'] }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
                     @else
-                        <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-title">{{ $nav['name'] }} </li>
                     @endif
                 @endforeach
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-stack"></i>
-                        <span>Products</span>
-                    </a>
-
-                    <ul class="submenu">
-
-                        <li class="submenu-item active">
-                            <a href="component-accordion.html" class="submenu-link">
-                                <i class="bi bi-patch-plus"></i>
-                                <span>New product</span>
-                            </a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-accordion.html" class="submenu-link">
-                                <i class="bi bi-pencil-square"></i>
-                                <span>Edit Product</span>
-                            </a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-accordion.html" class="submenu-link">
-                                <i class="bi bi-grid-3x2-gap-fill"></i>
-                                <span>Catagories</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>
