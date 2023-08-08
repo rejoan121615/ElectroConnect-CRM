@@ -241,32 +241,6 @@
             'icon' => '  <i class="bi bi-cart4"></i>',
             'active' => false,
             'url' => '/product',
-            'child' => [
-                [
-                    'name' => 'User Management',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/product/add',
-                ],
-                [
-                    'name' => 'Company Information',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/product/edit',
-                ],
-                [
-                    'name' => 'Notification <br/> Preferences',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/catagory',
-                ],
-                [
-                    'name' => 'Data Backup & Restore',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/brands',
-                ],
-            ],
         ],
     ];
 @endphp
