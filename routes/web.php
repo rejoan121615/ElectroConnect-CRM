@@ -21,4 +21,5 @@ Route::prefix('user')->group(function () {
   Route::post('store', [UserController::class, 'store'])->name('store');
   Route::get('recovery', [UserController::class, 'recovery'])->name('recovery');
   Route::post('recovery', [UserController::class, 'getRecovery']);
+  Route::post('logout', [UserController::class, 'logout'])->name('logout');
 });

@@ -101,4 +101,18 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * logout user
+     */
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        // handle token 
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('msg', 'You have been logged out successfully');
+    }
 }
