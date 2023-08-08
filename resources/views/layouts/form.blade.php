@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Login - Mazer Admin Dashboard</title>
 
     <link rel="shortcut icon" href="./assets/compiled/svg/favicon.svg" type="image/x-icon" />
     <link rel="shortcut icon"
@@ -12,36 +12,27 @@
         type="image/png" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/auth.css') }}" />
 </head>
 
 <body>
     <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
-    <div id="app">
-        {{-- side bar  --}}
-        @include('partials.__sidebar')
-        {{-- main section  --}}
-        <div id="main">
-          {{-- navbar  --}}
-          @include('partials.__navbar')
-          {{-- page heading  --}}
-            <div class="page-heading">
-                <h3>Profile Statistics</h3>
+    <div id="auth">
+        <div class="row h-100">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <h1 class="auth-title">{{ $title }}</h1>
+                    <p class="auth-subtitle mb-5 mb-lg-3">
+                        {{ $des }}
+                    </p>
+                    @yield('form')
+                </div>
             </div>
-            <div class="page-content">
-                {{-- @yield('content') --}}
-                {{ $slot }}
+            <div class="col-lg-7 d-none d-lg-block">
+                <div id="auth-right"></div>
             </div>
-            {{-- include footer  --}}
-            @include('partials.__footer')
         </div>
     </div>
-    <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
-    <script src="{{ asset('assets/extensions/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
-    <!-- Need: Apexcharts -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
-    {{-- <script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script> --}}
 </body>
 
 </html>

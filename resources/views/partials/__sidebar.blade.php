@@ -202,7 +202,7 @@
             ],
         ],
         [
-            'name' => 'Reports & Analytics',
+            'name' => 'Reports',
             'icon' => '  <i class="bi bi-cart4"></i>',
             'active' => false,
             'url' => '/product',
@@ -232,15 +232,6 @@
                     'url' => '/brands',
                 ],
             ],
-        ],
-        [
-            'name' => 'Management',
-        ],
-        [
-            'name' => 'Settings',
-            'icon' => '  <i class="bi bi-cart4"></i>',
-            'active' => false,
-            'url' => '/product',
         ],
     ];
 @endphp
@@ -303,8 +294,10 @@
                                 <ul class="submenu">
                                     @foreach ($nav['child'] as $subNav)
                                         <li class="submenu-item {{ $subNav['active'] ? 'active' : '' }}">
-                                            <a href="{{ $subNav['url'] }}" class="sidebar-link d-flex ">
-                                                {!! $subNav['icon'] !!}
+                                            <a href="{{ $subNav['url'] }}" class="submenu-link d-flex ">
+                                                <div style=" width: 1.2rem; margin-right: 5px;" >
+                                                    {!! $subNav['icon'] !!}
+                                                </div>
                                                 <span>{{ $subNav['name'] }}</span>
                                             </a>
                                         </li>
@@ -313,7 +306,7 @@
                             @endif
                         </li>
                     @else
-                        <li class="sidebar-title">{{ $nav['name'] }} </li>
+                        <li class="sidebar-title {{ isset($nav['style']) ? 'mt-5' : '' ; }}">{{ $nav['name'] }} </li>
                     @endif
                 @endforeach
             </ul>

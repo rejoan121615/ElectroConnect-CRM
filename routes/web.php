@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,8 +15,10 @@ Route::get('/', function () {
 // Route::post('user/store', [AuthController::class, 'store']);
 
 Route::prefix('user')->group(function () {
-  Route::get('login', [AuthController::class, 'index']);
-  Route::post('auth', [AuthController::class, 'auth']);
-  Route::get('register', [AuthController::class, 'create'])->name('register');
-  Route::post('store', [AuthController::class, 'store'])->name('store');
+  Route::get('login', [UserController::class, 'index'])->name('login');
+  Route::post('auth', [UserController::class, 'auth'])->name('auth');
+  Route::get('register', [UserController::class, 'create'])->name('register');
+  Route::post('store', [UserController::class, 'store'])->name('store');
+  Route::get('recovery', [UserController::class, 'recovery'])->name('recovery');
+  Route::post('recovery', [UserController::class, 'getRecovery']);
 });
