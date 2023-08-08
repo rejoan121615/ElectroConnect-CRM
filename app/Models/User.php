@@ -3,9 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+
+class User extends Authenticatable
 {
     use HasFactory;
+
+    protected $fillable = ['username', 'email', 'password', 'first_name', 'last_name', 'email', 'role', 'profile_picture'];
+
+//     user_id
+//  username
+//  password (hashed)
+//  first_name
+//  last_name
+//  email
+//  role
+//  profile_picture
+//  created_at
+//  updated_at
+
 }

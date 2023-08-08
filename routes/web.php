@@ -4,6 +4,10 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/', function () {
+  return view('pages.home');
+});
+
 // authentication 
 // Route::get('user/login', [AuthController::class, 'index']);
 // Route::post('user/auth', [AuthController::class, 'auth']);
