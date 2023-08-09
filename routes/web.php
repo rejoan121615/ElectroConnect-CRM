@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   return view('pages.home');
-});
+})->middleware('auth');
 
 // authentication 
 // Route::get('user/login', [AuthController::class, 'index']);

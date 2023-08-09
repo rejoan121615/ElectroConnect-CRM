@@ -35,9 +35,9 @@ return new class extends Migration
             $table->text('tags')->nullable();
 
             // Foreign Key Constraints
-            // $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('set null');
-            // $table->foreign('brand_id')->references('brand_id')->on('brands')->onDelete('set null');
-            // $table->foreign('supplier_id')->references('supplier_id')->on('suppliers')->onDelete('set null');
+            $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('set null');
+            $table->foreign('brand_id')->references('brand_id')->on('brands')->onDelete('set null');
+            $table->foreign('supplier_id')->references('supplier_id')->on('suppliers')->onDelete('set null');
         });
 
     }

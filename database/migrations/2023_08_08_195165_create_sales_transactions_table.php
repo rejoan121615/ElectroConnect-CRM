@@ -24,7 +24,8 @@ return new class extends Migration
             // foreign key construction 
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
             $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
-            // $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('set null'); // got an error on this line 
+            $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('set null'); 
+            // got an error on this line 
         });
     }
 
