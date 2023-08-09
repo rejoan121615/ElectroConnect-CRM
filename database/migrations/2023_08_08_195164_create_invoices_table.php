@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
+            $table->id('invoice_id');
+            $table->unsignedBigInteger('transaction_id')->nullable();
+            $table->date('invoice_date');
+            $table->date('due_date')->nullable();
+            $table->string('status');
+            $table->decimal('total_amount', 10, 2)->nullable();
             $table->timestamps();
+            // foreign key 
+            $table->foreign('transaction_id')->references('transaction_id')->on('sales_transactions')->onDelete('cascade');
         });
     }
 

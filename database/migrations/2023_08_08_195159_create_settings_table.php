@@ -12,9 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->id();
+            $table->id('setting_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->json('notification_preferences')->nullable();
+            $table->string('data_backup_frequency')->nullable();
+            $table->string('data_restore_option')->nullable();
             $table->timestamps();
+            // Foreign Key Constraint
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
+
     }
 
     /**

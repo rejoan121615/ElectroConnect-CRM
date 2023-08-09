@@ -12,9 +12,34 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->id('product_id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->decimal('cost_price', 10, 2)->nullable();
+            $table->integer('stock_quantity')->default(0);
+            $table->integer('reorder_threshold')->nullable();
+            $table->string('image_url')->nullable();
+            $table->text('specifications')->nullable();
+            $table->boolean('availability')->default(true);
             $table->timestamps();
+
+            // Additional Columns
+            $table->string('barcode')->nullable();
+            $table->decimal('weight', 10, 2)->nullable();
+            $table->string('dimensions')->nullable();
+            $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->string('supplier_product_id')->nullable();
+            $table->text('tags')->nullable();
+
+            // Foreign Key Constraints
+            // $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('set null');
+            // $table->foreign('brand_id')->references('brand_id')->on('brands')->onDelete('set null');
+            // $table->foreign('supplier_id')->references('supplier_id')->on('suppliers')->onDelete('set null');
         });
+
     }
 
     /**

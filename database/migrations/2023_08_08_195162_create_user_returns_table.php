@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_returns', function (Blueprint $table) {
-            $table->id();
+            $table->id('return_id');
+            $table->unsignedBigInteger('transaction_id');
+            $table->date('return_date');
+            $table->string('reason')->nullable();
+            $table->string('resolution');
+            $table->text('notes')->nullable();
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('transaction_id')->on('sales_transactions')->onDelete('cascade');
         });
     }
 
