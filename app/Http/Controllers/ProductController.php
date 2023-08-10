@@ -30,7 +30,15 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        dd($request);
+
+        // upload files 
+        if ($request->has('image_url')) {
+            dd($request->file('image_url')->getClientOriginalExtension());
+        }
+        // $imgFile = $request->file('image_url')->store('products', 'public');
+        
+
+
     }
 
     /**

@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="{{ route('product.store') }}">
+                            <form class="form" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row gy-2">
                                     <div class="col-md-12 col-12">
@@ -56,7 +56,8 @@
 
                                     </div>
                                     <div class="col-md-6">
-                                        <x-forms.input type="file" name="image_url" label="Product Image" />
+                                        <x-forms.input type="file" name="image_url" label="Product Image" error="Image upload fail (make sure it's JPG/PNG/JPEG) and smaller then 4Mb" />
+                                        {{-- <input type="file" name="images[]" id="images" class="form-control" multiple> --}}
                                     </div>
                                     <div class="col-md-6">
                                         <x-forms.input name="tags" label="Write Your Tags" />
