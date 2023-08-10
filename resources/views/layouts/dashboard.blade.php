@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>{{ $pageTitle ?? 'Document' }}</title>
 
     <link rel="shortcut icon" href="./assets/compiled/svg/favicon.svg" type="image/x-icon" />
     <link rel="shortcut icon"
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css') }}" />
+    @yield('css')
 </head>
 
 <body>
@@ -22,15 +23,16 @@
         @include('partials.__sidebar')
         {{-- main section  --}}
         <div id="main">
-          {{-- navbar  --}}
-          @include('partials.__navbar')
-          {{-- page heading  --}}
-            <div class="page-heading">
-                <h3>Profile Statistics</h3>
-            </div>
+            {{-- navbar  --}}
+            @include('partials.__navbar')
+            {{-- page heading  --}}
+            @if (isset($title))
+                <div class="page-heading">
+                    <h3>{{ $title }}</h3>
+                </div>
+            @endif
             <div class="page-content">
-                {{-- @yield('content') --}}
-                {{ $slot }}
+                @yield('content')
             </div>
             {{-- include footer  --}}
             @include('partials.__footer')
@@ -39,6 +41,9 @@
     <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
     <script src="{{ asset('assets/extensions/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
+
+    @yield('scripts')
+
     <!-- Need: Apexcharts -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
     {{-- <script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script> --}}

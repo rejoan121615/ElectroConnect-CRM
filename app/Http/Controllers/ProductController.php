@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -13,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.product.index', [ 'pageTitle' => 'Products']);
     }
 
     /**
@@ -21,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.product.create');
     }
 
     /**
@@ -29,7 +30,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

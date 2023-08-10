@@ -28,7 +28,6 @@ class UserController extends Controller
         ]);
 
         // check user 
-        // dd($request);
         if (auth()->attempt($formData, $request->has('remember'))) {
             return redirect('/');
         } else {

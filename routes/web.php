@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,9 @@ Route::prefix('user')->group(function () {
   Route::get('recovery', [UserController::class, 'recovery'])->name('recovery');
   Route::post('recovery', [UserController::class, 'getRecovery']);
   Route::post('logout', [UserController::class, 'logout'])->name('logout');
+});
+
+
+Route::middleware('auth')->group(function () {
+  Route::resource('product', ProductController::class);
 });

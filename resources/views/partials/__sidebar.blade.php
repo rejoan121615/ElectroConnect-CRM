@@ -13,13 +13,19 @@
             'name' => 'Products',
             'icon' => '  <i class="bi bi-stack"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '',
             'child' => [
+                [
+                    'name' => 'All Product',
+                    'icon' => '<i class="bi bi-list-nested"></i>',
+                    'active' => false,
+                    'url' => '/product',
+                ],
                 [
                     'name' => 'Add Product',
                     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/product/create',
                 ],
                 [
                     'name' => 'Edit Product',

@@ -1,7 +1,7 @@
 <header>
     <div class=" card  ps-3 p-2 ">
         <div class=" d-flex flex-row align-items-center justify-content-between ">
-            <p class=" mb-0 me-4 ">Welcome, <span class=" fw-bold">{{ auth()->user()->username}}</span></p>
+            <p class=" mb-0 me-4 ">Welcome, <span class=" fw-bold">{{ Auth::user()->username }}</span></p>
             <div class="">
                 <div class="dropdown">
                     <button class="btn btn-primary bg-transparent text-dark border-0 dropdown-toggle" type="button"

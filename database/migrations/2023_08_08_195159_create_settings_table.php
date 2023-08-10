@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('data_restore_option')->nullable();
             $table->timestamps();
             // Foreign Key Constraint
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
     }
