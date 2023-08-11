@@ -30,15 +30,17 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-
+        $formData = $request->all();
+        
         // upload files 
         if ($request->has('image_url')) {
-            dd($request->file('image_url')->getClientOriginalExtension());
+            $formData['image_url'] = $request->file('image_url')->store('products', 'public');
         }
-        // $imgFile = $request->file('image_url')->store('products', 'public');
+
+        // create product 
+        Product::create($formData);
+        // dd($formData);
         
-
-
     }
 
     /**
@@ -52,9 +54,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    // public function edit(Product $product)
+    public function edit()
     {
-        //
+        return view('pages.product.create');
     }
 
     /**

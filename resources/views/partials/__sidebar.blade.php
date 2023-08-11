@@ -31,7 +31,7 @@
                     'name' => 'Edit Product',
                     'icon' => '<i class="bi bi-pencil-fill"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/product/1/edit',
                 ],
                 [
                     'name' => 'Catagory',
@@ -51,25 +51,31 @@
             'name' => 'Sales',
             'icon' => '  <i class="bi bi-cart4"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '',
             'child' => [
+                 [
+                    'name' => 'All Sales',
+                    'icon' => '<i class="bi bi-list-nested"></i>',
+                    'active' => false,
+                    'url' => '/sales',
+                ],
                 [
                     'name' => 'New Sale',
                     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/sales/create',
                 ],
                 [
                     'name' => 'Manage Sale',
                     'icon' => '<i class="bi bi-pencil-fill"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/sales/edit',
                 ],
                 [
                     'name' => 'Invoices',
                     'icon' => '<i class="bi bi-receipt"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/invoices',
                 ],
                 [
                     'name' => 'Returns',

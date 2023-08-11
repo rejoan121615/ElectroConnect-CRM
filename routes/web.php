@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +31,7 @@ Route::prefix('user')->group(function () {
 
 Route::middleware('auth')->group(function () {
   Route::resource('product', ProductController::class);
+  Route::resource('catagory', CategoryController::class);
+  Route::resource('brands', BrandController::class);
+  Route::resource('sales', SalesController::class);
 });

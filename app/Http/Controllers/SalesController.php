@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SalesTransaction;
-use App\Http\Requests\StoreSalesTransactionRequest;
-use App\Http\Requests\UpdateSalesTransactionRequest;
+use App\Models\Sales;
+use App\Http\Requests\StoreSalesRequest;
+use App\Http\Requests\UpdateSalesRequest;
 
-class SalesTransactionController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('pages.sales.index');
     }
 
     /**
@@ -21,13 +21,13 @@ class SalesTransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.sales.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSalesTransactionRequest $request)
+    public function store(StoreSalesRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SalesTransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SalesTransaction $salesTransaction)
+    public function show(Sales $sales)
     {
         //
     }
@@ -43,7 +43,7 @@ class SalesTransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SalesTransaction $salesTransaction)
+    public function edit(Sales $sales)
     {
         //
     }
@@ -51,7 +51,7 @@ class SalesTransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSalesTransactionRequest $request, SalesTransaction $salesTransaction)
+    public function update(UpdateSalesRequest $request, Sales $sales)
     {
         //
     }
@@ -59,7 +59,7 @@ class SalesTransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SalesTransaction $salesTransaction)
+    public function destroy(Sales $sales)
     {
         //
     }
