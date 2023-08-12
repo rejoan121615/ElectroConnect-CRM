@@ -25,7 +25,7 @@
         {{-- main section  --}}
         <div id="main">
             {{-- navbar  --}}
-            @include('partials.__navbar')
+            {{-- @include('partials.__navbar') --}}
             {{-- page heading  --}}
             @if (isset($title))
                 <div class="page-heading">

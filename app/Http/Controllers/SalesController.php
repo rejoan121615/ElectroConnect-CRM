@@ -6,6 +6,8 @@ use App\Models\Sales;
 use App\Http\Requests\StoreSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 
+use function PHPUnit\Framework\returnSelf;
+
 class SalesController extends Controller
 {
     /**
@@ -32,12 +34,13 @@ class SalesController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      */
     public function show(Sales $sales)
     {
-        //
+        return 'hello rejoan';
     }
 
     /**
@@ -63,4 +66,23 @@ class SalesController extends Controller
     {
         //
     }
+
+
+    /**
+     * Return sales table list to generate invoices
+     */
+    public function invoice()
+    {
+        return view('pages.sales.invoices');
+    }
+    
+    /**
+     * Return sales table list to generate invoices
+     */
+    // public function return()
+    // {
+    //     return view('pages.sales.invoices');
+    // }
+
+
 }
