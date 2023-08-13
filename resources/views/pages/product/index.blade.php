@@ -18,6 +18,7 @@
                     <table class="table" id="table">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>Quantity</th>
@@ -28,6 +29,7 @@
                         <tbody>
                            @foreach ($products as $product )
                                <tr>
+                                <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->brand_id }}</td>
                                 <td>{{ $product->stock_quantity }}</td>

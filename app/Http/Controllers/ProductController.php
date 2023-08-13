@@ -32,16 +32,21 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $formData = $request->all();
-        
-        // upload files 
-        if ($request->has('image_url')) {
-            $formData['image_url'] = $request->file('image_url')->store('products', 'public');
-        }
 
-        // create product 
-        Product::create($formData);
-        // dd($formData);
+        try {
+            $formData = $request->all();
+            // upload files 
+            if ($request->has('image_url')) {
+                $formData['image_url'] = $request->file('image_url')->store('products', 'public');
+            }
+            // create product 
+            Product::create($formData);
+            return redirect('product')->with(['msg' => 'New product added']);
+        } catch (\Exception $e) {
+            return back()->withInput()->with(['msg' => "Creation failed"]);
+        }
+        
+        
         
     }
 

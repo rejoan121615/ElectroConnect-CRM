@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/custom/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/custom/style.css') }}">
     @yield('css')
 </head>
 
@@ -32,6 +32,17 @@
                     <h3>{{ $title }}</h3>
                 </div>
             @endif
+            {{-- alert box  --}}
+            @if (session()->has('msg'))
+                <div>
+                    <div class="alert {{ session()->has('alert') ? ' alert-danger' : 'alert-success' }} alert-dismissible fade show"
+                        role="alert">
+                        {{ session('msg') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+            {{-- page content  --}}
             <div class="page-content">
                 @yield('content')
             </div>
