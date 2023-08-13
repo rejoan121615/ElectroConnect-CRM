@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+// use carbon
 
 class ProductController extends Controller
 {
@@ -14,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.product.index', [ 'pageTitle' => 'Products']);
+        return view('pages.product.index', [ 'pageTitle' => 'Products', 'products' => Product::get()]);
     }
 
     /**
@@ -48,7 +50,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('pages.product.show', ['product' => $product]);
     }
 
     /**

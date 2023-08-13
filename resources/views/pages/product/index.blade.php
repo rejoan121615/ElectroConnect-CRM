@@ -23,7 +23,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                           @foreach ($products as $product )
+                               <tr>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->brand_id }}</td>
+                                <td>{{ $product->stock_quantity }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>
+                                    <div class=" btn-group">
+                                        <a href="{{ route('product.show', $product->id) }}" class=" btn btn-primary">View</a>
+                                        <a href="" class=" btn btn-secondary ">Edit</a>
+                                        <a href="" class=" btn btn-danger ">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                           @endforeach
+                            {{-- <tr>
                                 <td>OPPO A17 Smartphone (4/64GB)</td>
                                 <td>OPPO</td>
                                 <td>14</td>
@@ -35,8 +50,8 @@
                                         <a href="" class=" btn btn-danger ">Delete</a>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> --}}
+                            {{-- <tr>
                                 <td>Redmi Note 7</td>
                                 <td>OPPO</td>
                                 <td>14</td>
@@ -61,7 +76,7 @@
                                         <a href="" class=" btn btn-danger ">Delete</a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

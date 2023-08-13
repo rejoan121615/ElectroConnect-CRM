@@ -1,7 +1,7 @@
 <header>
     <div class=" card  ps-3 p-2 ">
         <div class=" d-flex flex-row align-items-center justify-content-between ">
-            <p class=" mb-0 me-4 ">Welcome, <span class=" fw-bold">{{ Auth::user()->username }}</span></p>
+            <p class=" mb-0 me-4 ">Welcome, <span class=" fw-bold">{{ Auth::user() ? Auth::user()->username : 'Mohd Rejoan'  }}</span></p>
             <div class="">
                 <div class="dropdown">
                     <button class="btn btn-primary bg-transparent text-dark border-0 dropdown-toggle" type="button"
@@ -21,16 +21,21 @@
                                     style=" width: 1.2rem; margin-right: 5px; "><i class="bi bi-gear-fill"></i></span>
                                 Setting</a></li>
                         <li>
-                            <form method="POST" action="{{ route('logout')}}">
+                            <form method="POST" action="">
                                 @csrf
                                 <button class=" dropdown-item">
                                     <span style=" width: 1.2rem; margin-right: 5px; "><i
                                             class="bi bi-box-arrow-in-left"></i></span> Logout
                                 </button>
                             </form>
-                            {{-- <a class="dropdown-item " href="user/logout"> 
-                                <span style=" width: 1.2rem; margin-right: 5px; "><i
-                                        class="bi bi-box-arrow-in-left"></i></span> Logout</a> --}}
+                            {{-- <form method="POST" action="{{ route('logout')}}">
+                                @csrf
+                                <button class=" dropdown-item">
+                                    <span style=" width: 1.2rem; margin-right: 5px; "><i
+                                            class="bi bi-box-arrow-in-left"></i></span> Logout
+                                </button>
+                            </form> --}}
+                           
                         </li>
                     </ul>
                 </div>
