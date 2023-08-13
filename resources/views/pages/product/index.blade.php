@@ -11,6 +11,9 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
+                <div class=" w-100 d-grid mb-4 ">
+                     <a class=" btn btn-success " href="{{ route("product.create")}}">Add new product</a>
+                    </div>
                 <div class="table-responsive">
                     <table class="table" id="table">
                         <thead>

@@ -1,4 +1,11 @@
 @php
+    use Illuminate\Support\Facades\Route;
+    $currentRoute = Route::currentRouteName();
+    $currentUrl = '/'.explode('.', $currentRoute)[0];
+    // dd($url);
+@endphp
+
+@php
     $navItems = [
         [
             'name' => 'Menu',
@@ -13,7 +20,7 @@
             'name' => 'Products',
             'icon' => '  <i class="bi bi-stack"></i>',
             'active' => false,
-            'url' => '',
+            'url' => '/product',
             'child' => [
                 [
                     'name' => 'All Product',
@@ -51,9 +58,9 @@
             'name' => 'Sales',
             'icon' => '  <i class="bi bi-cart4"></i>',
             'active' => false,
-            'url' => '',
+            'url' => '/sales',
             'child' => [
-                 [
+                [
                     'name' => 'All Sales',
                     'icon' => '<i class="bi bi-list-nested"></i>',
                     'active' => false,
@@ -121,31 +128,31 @@
             'name' => 'Suppliers',
             'icon' => '  <i class="bi bi-truck"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '/supplier',
             'child' => [
                 [
                     'name' => 'Supplier List',
                     'icon' => '<i class="bi bi-list-stars"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/supplier/add',
                 ],
                 [
                     'name' => 'Add New',
                     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/supplier/edit',
                 ],
                 [
                     'name' => 'Edit Supplier',
                     'icon' => '<i class="bi bi-pencil-fill"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/supplier/catagory',
                 ],
                 [
                     'name' => 'Supplier Orders',
                     'icon' => '<i class="bi bi-list"></i>',
                     'active' => false,
-                    'url' => '/brands',
+                    'url' => '/supplier/brands',
                 ],
             ],
         ],
@@ -153,31 +160,31 @@
             'name' => 'Customers',
             'icon' => '  <i class="bi bi-person-circle"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '/customers',
             'child' => [
                 [
                     'name' => 'Customer List',
                     'icon' => '<i class="bi bi-list-stars"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/customers/add',
                 ],
                 [
                     'name' => 'Customer Communication',
                     'icon' => '<i class="bi bi-chat-dots"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/customers/edit',
                 ],
                 [
                     'name' => 'Support Tickets',
                     'icon' => '<i class="bi bi-ticket-detailed"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/customers/support',
                 ],
                 [
                     'name' => 'Customer Analytics',
                     'icon' => '<i class="bi bi-file-earmark-person-fill"></i>',
                     'active' => false,
-                    'url' => '/brands',
+                    'url' => '/customers/analytics',
                 ],
             ],
         ],
@@ -185,31 +192,31 @@
             'name' => 'Tasks & meeting',
             'icon' => '  <i class="bi bi-calendar3"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '/tasks',
             'child' => [
                 [
                     'name' => 'Task List',
                     'icon' => '<i class="bi bi-card-list"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/tasks/add',
                 ],
                 [
                     'name' => 'New Task',
                     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/tasks/edit',
                 ],
                 [
                     'name' => 'Meetings',
                     'icon' => '<i class="bi bi-wechat"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/tasks/catagory',
                 ],
                 [
                     'name' => 'Calendar',
                     'icon' => '<i class="bi bi-calendar2"></i>',
                     'active' => false,
-                    'url' => '/brands',
+                    'url' => '/tasks/brands',
                 ],
             ],
         ],
@@ -217,35 +224,37 @@
             'name' => 'Reports',
             'icon' => '  <i class="bi bi-cart4"></i>',
             'active' => false,
-            'url' => '/product',
+            'url' => '/reports',
             'child' => [
                 [
                     'name' => 'Sale Reports',
                     'icon' => '<i class="bi bi-grid-fill"></i>',
                     'active' => false,
-                    'url' => '/product/add',
+                    'url' => '/reports/add',
                 ],
                 [
                     'name' => 'Inventory Reports',
                     'icon' => '<i class="bi bi-grid-fill"></i>',
                     'active' => false,
-                    'url' => '/product/edit',
+                    'url' => '/reports/edit',
                 ],
                 [
                     'name' => 'Customer Reports',
                     'icon' => '<i class="bi bi-grid-fill"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/reports/catagory',
                 ],
                 [
                     'name' => 'Custom Reports',
                     'icon' => '<i class="bi bi-grid-fill"></i>',
                     'active' => false,
-                    'url' => '/brands',
+                    'url' => '/reports/brands',
                 ],
             ],
         ],
     ];
+
+    
 @endphp
 
 
@@ -295,19 +304,23 @@
                 {{-- navigation items  --}}
                 @foreach ($navItems as $nav)
                     @if (isset($nav['icon']))
+                    @php
+                        // dd( explode('.', $currentRoute));
+                    @endphp
                         <li
-                            class="sidebar-item {{ $nav['active'] ? 'active' : '' }} {{ isset($nav['child']) ? 'has-sub' : '' }} ">
+                            class="sidebar-item {{ $nav['url'] == $currentUrl ? 'active' : '' }} {{ isset($nav['child']) ? 'has-sub' : '' }} ">
+                            {{-- class="sidebar-item {{ $currentUrl.'/' === $nav['url'] ? active : '' }} {{ $nav['active'] ? 'active' : '' }} {{ isset($nav['child']) ? 'has-sub' : '' }} "> --}}
                             <a href="{{ $nav['url'] }}" class="sidebar-link">
                                 {!! $nav['icon'] !!}
                                 <span>{{ $nav['name'] }}</span>
                             </a>
                             {{-- check if sub menu available  --}}
                             @if (isset($nav['child']))
-                                <ul class="submenu">
+                                <ul class="submenu {{ $nav['url'] == $currentUrl ? 'submenu-open' : '' }} ">
                                     @foreach ($nav['child'] as $subNav)
                                         <li class="submenu-item {{ $subNav['active'] ? 'active' : '' }}">
                                             <a href="{{ $subNav['url'] }}" class="submenu-link d-flex ">
-                                                <div style=" width: 1.2rem; margin-right: 5px;" >
+                                                <div style=" width: 1.2rem; margin-right: 5px;">
                                                     {!! $subNav['icon'] !!}
                                                 </div>
                                                 <span>{{ $subNav['name'] }}</span>
@@ -318,7 +331,7 @@
                             @endif
                         </li>
                     @else
-                        <li class="sidebar-title {{ isset($nav['style']) ? 'mt-5' : '' ; }}">{{ $nav['name'] }} </li>
+                        <li class="sidebar-title {{ isset($nav['style']) ? 'mt-5' : '' }}">{{ $nav['name'] }} </li>
                     @endif
                 @endforeach
             </ul>
