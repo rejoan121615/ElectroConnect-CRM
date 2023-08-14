@@ -11,14 +11,17 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <form action=" {{ route($route) }} " method="POST">
+                <form action="{{ $route }}" method="POST">
                     @csrf
+                    @if (isset($formType))
+                      @method($formType)
+                    @endif
                     <div class="row">
                         <div class="col-3">
-                            <x-forms.input label="Catagory Name" name="name" />
+                            <x-forms.input label="Catagory Name" name="name" value="{{ isset($formValue) ? $formValue->name : ''  }}" />
                         </div>
                         <div class="col-7">
-                            <x-forms.input label="Short Description (max: 100)" name="description" />
+                            <x-forms.input label="Short Description (max: 100)" name="description" value="{{ isset($formValue) ? $formValue->description : ''  }}" />
                         </div>
                         <div class="col-2 ">
                             <button type="submit" class=" btn btn-primary mt-30 w-100 ">Create Category</button>
@@ -47,10 +50,12 @@
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
                                     <td class=" btn-group">
-                                        <form action="">
-                                            <button type="button" class=" btn btn-secondary ">Edit</button>
+                                        <a href="{{ route('category.edit', $category->id ) }}" class=" btn btn-primary ">Edit</a>
+                                        <form action="{{ route('category.destroy', $category->id )}}" method="POST">
+                                          @csrf
+                                          @method('delete')
+                                          <button type="submit" class=" btn btn-danger ">Delete</button>
                                         </form>
-                                        <button class=" btn btn-danger ">Delete</button>
                                     </td>
                                 </tr>
                             @endforeach

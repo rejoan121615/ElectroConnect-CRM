@@ -13,7 +13,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('pages.category.index')->with(['pageTitle' => "Category Page", "categories" => Category::all(), 'route' => 'category.store']);
+        return view('pages.category.index')->with([
+            'pageTitle' => "Category Page",
+            "categories" => Category::all(), 'route' => route('category.store')
+        ]);
     }
 
     /**
@@ -29,7 +32,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        // dd($request);
+        $formData = $request->all();
+
+        // save data 
+        Category::create($formData);
+
+        // redirect to page 
+        return redirect()->route('category.index')->with(['msg' => 'New category created', 'type' => 'success']);
     }
 
     /**
@@ -45,7 +54,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // dd($category);
+        return view('pages.category.index')->with([
+            'route' => route('category.update', $category->id),
+            'categories' => Category::all(),
+            'formType' => 'patch',
+            'formValue' => $category
+        ]);
     }
 
     /**
@@ -53,7 +68,17 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+
+        try {
+            $formData = $request->all();
+            // dd($formData); 
+
+            $category->update($formData);
+
+            return redirect()->route('category.index')->with(['msg' => 'Category updated successfully', 'type' => 'success']);
+        } catch (\Exception $e) {
+            return redirect()->route('category.index')->with(['msg' => 'Category updated failed', 'type' => 'fail']);
+        }
     }
 
     /**
@@ -61,6 +86,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('category.index')->with(['msg' => 'Category deleted successfully', 'type' => 'success']);
     }
 }
