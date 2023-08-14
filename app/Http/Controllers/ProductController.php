@@ -88,6 +88,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        try {
+             $product->delete();
+            return redirect()->route('product.index')->with(['msg' => "Product deleted sucessfully", 'type' => 'success']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['msg' => 'List deletation failed', 'type' => 'fail']);
+        }
     }
 }

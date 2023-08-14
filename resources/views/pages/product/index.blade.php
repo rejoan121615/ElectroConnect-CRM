@@ -38,7 +38,12 @@
                                     <div class=" btn-group">
                                         <a href="{{ route('product.show', $product->id) }}" class=" btn btn-primary">View</a>
                                         <a href="{{ route('product.edit', $product->id )}}" class=" btn btn-secondary ">Edit</a>
-                                        <a href="" class=" btn btn-danger ">Delete</a>
+                                        <form action="{{ route('product.destroy', $product->id)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button class=" btn btn-danger">Delete</button>
+                                        </form>
+                                        {{-- <a href="" class=" btn btn-danger ">Delete</a> --}}
                                     </div>
                                 </td>
                             </tr>
