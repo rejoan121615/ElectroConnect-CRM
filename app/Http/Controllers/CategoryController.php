@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('pages.category.index');
+        return view('pages.category.index')->with(['pageTitle' => "Category Page", "categories" => Category::all(), 'route' => 'category.store']);
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.category.index')->with(['pageTitle' => "Category Page", "categories" => Category::all(), "route" => 'category.store']);
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        // dd($request);
     }
 
     /**

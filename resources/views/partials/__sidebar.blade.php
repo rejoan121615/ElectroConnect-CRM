@@ -38,7 +38,7 @@
                     'name' => 'Catagory',
                     'icon' => '<i class="bi bi-columns-gap"></i>',
                     'active' => false,
-                    'url' => '/product/catagory',
+                    'url' => '/category',
                 ],
                 [
                     'name' => 'Brands',

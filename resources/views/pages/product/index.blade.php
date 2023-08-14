@@ -23,7 +23,7 @@
                                 <th>Brand</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
-                                <th class=" no-sort " style=" width: 0">Status</th>
+                                <th class=" no-sort " style=" width: 0">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,17 +61,5 @@
     <script src="{{ asset('assets/extensions/jquery.min.js') }}"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
     <script src="{{ asset('assets/extensions/datatables.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                columnDefs: [{
-                        targets: 'no-sort',
-                        orderable: false
-                    }, 
-                    // { targets: 3, width: '100px' },
-                ]
-
-            });
-        });
-    </script>
+    <script src="{{ asset('assets/custom/script.js') }}"></script>
 @endsection

@@ -39,9 +39,15 @@ Route::prefix('/')->group(function () {
   Route::get('/', function () {
     return view('pages.home');
   });
-  
+
+
+
   Route::resource('product', ProductController::class);
-  Route::resource('catagory', CategoryController::class);
+  Route::resource('category', CategoryController::class);
+
+
+
+
   Route::resource('brands', BrandController::class);
   Route::get('sales/invoice', [SalesController::class, 'invoice']);
   Route::get('sales/return', [SalesController::class, 'return']);
