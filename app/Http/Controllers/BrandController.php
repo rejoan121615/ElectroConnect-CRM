@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 
@@ -13,7 +14,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('pages.brands.index');
+        return view('pages.brand.index')->with([
+            'pageTitle' => "Brand Page",
+            "brands" => Brand::all(), 'route' => route('brand.store')
+        ]);
     }
 
     /**
@@ -21,7 +25,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.brand.index')
+        ->with(['pageTitle' => "Brand Page", "brands" => Brand::all(), "route" => 'brand.store']);
     }
 
     /**
@@ -29,7 +34,14 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        $formData = $request->all();
+
+        // save data 
+        Brand::create($formData);
+
+        // redirect to page 
+        return redirect()->route('brand.index')->with(['msg' => 'New brand created', 'type' => 'success']);
+    
     }
 
     /**
@@ -45,7 +57,13 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('pages.brand.index')->with([
+            'route' => route('brand.update', $brand->id),
+            'brands' => Brand::all(),
+            'formType' => 'patch',
+            'formValue' => $brand,
+            'btn' => 'Update'
+        ]);
     }
 
     /**
@@ -53,7 +71,16 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        try {
+            $formData = $request->all();
+            // dd($formData); 
+
+            $brand->update($formData);
+
+            return redirect()->route('brand.index')->with(['msg' => 'Brand updated successfully', 'type' => 'success']);
+        } catch (\Exception $e) {
+            return redirect()->route('brand.index')->with(['msg' => 'Brand updated failed', 'type' => 'fail']);
+        }
     }
 
     /**
@@ -61,6 +88,8 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        return redirect()->route('brand.index')->with(['msg' => 'Brand deleted successfully', 'type' => 'success']);
+      //
     }
 }

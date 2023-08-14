@@ -34,7 +34,7 @@
             @endif
             {{-- alert box  --}}
             @if (session()->has('msg'))
-                <div>
+                <div class=" fixed-top ">
                     <div class="alert {{ session()->has('alert') ? ' alert-danger' : 'alert-success' }} alert-dismissible fade show"
                         role="alert">
                         {{ session('msg') }}

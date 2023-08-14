@@ -44,7 +44,7 @@
                     'name' => 'Brands',
                     'icon' => '<i class="bi bi-box-fill"></i>',
                     'active' => false,
-                    'url' => '/product/brands',
+                    'url' => '/brand',
                 ],
             ],
         ],

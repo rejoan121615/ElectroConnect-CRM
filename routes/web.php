@@ -44,11 +44,11 @@ Route::prefix('/')->group(function () {
 
   Route::resource('product', ProductController::class);
   Route::resource('category', CategoryController::class);
+  Route::resource('brand', BrandController::class);
 
 
 
 
-  Route::resource('brands', BrandController::class);
   Route::get('sales/invoice', [SalesController::class, 'invoice']);
   Route::get('sales/return', [SalesController::class, 'return']);
   Route::resource('sales', SalesController::class);
