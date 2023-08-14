@@ -37,51 +37,12 @@
                                 <td>
                                     <div class=" btn-group">
                                         <a href="{{ route('product.show', $product->id) }}" class=" btn btn-primary">View</a>
-                                        <a href="" class=" btn btn-secondary ">Edit</a>
+                                        <a href="{{ route('product.edit', $product->id )}}" class=" btn btn-secondary ">Edit</a>
                                         <a href="" class=" btn btn-danger ">Delete</a>
                                     </div>
                                 </td>
                             </tr>
                            @endforeach
-                            {{-- <tr>
-                                <td>OPPO A17 Smartphone (4/64GB)</td>
-                                <td>OPPO</td>
-                                <td>14</td>
-                                <td>18,000</td>
-                                <td>
-                                    <div class=" btn-group">
-                                        <a href="" class=" btn btn-primary">View</a>
-                                        <a href="" class=" btn btn-secondary ">Edit</a>
-                                        <a href="" class=" btn btn-danger ">Delete</a>
-                                    </div>
-                                </td>
-                            </tr> --}}
-                            {{-- <tr>
-                                <td>Redmi Note 7</td>
-                                <td>OPPO</td>
-                                <td>14</td>
-                                <td>18,000</td>
-                                <td>
-                                    <div class=" btn-group">
-                                        <a href="" class=" btn btn-primary">View</a>
-                                        <a href="" class=" btn btn-secondary ">Edit</a>
-                                        <a href="" class=" btn btn-danger ">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Iphone 11 pro plus</td>
-                                <td>OPPO</td>
-                                <td>14</td>
-                                <td>18,000</td>
-                                <td>
-                                    <div class=" btn-group">
-                                        <a href="" class=" btn btn-primary">View</a>
-                                        <a href="" class=" btn btn-secondary ">Edit</a>
-                                        <a href="" class=" btn btn-danger ">Delete</a>
-                                    </div>
-                                </td>
-                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

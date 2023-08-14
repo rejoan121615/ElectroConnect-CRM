@@ -35,22 +35,16 @@
                     'url' => '/product/create',
                 ],
                 [
-                    'name' => 'Edit Product',
-                    'icon' => '<i class="bi bi-pencil-fill"></i>',
-                    'active' => false,
-                    'url' => '/product/1/edit',
-                ],
-                [
                     'name' => 'Catagory',
                     'icon' => '<i class="bi bi-columns-gap"></i>',
                     'active' => false,
-                    'url' => '/catagory',
+                    'url' => '/product/catagory',
                 ],
                 [
                     'name' => 'Brands',
                     'icon' => '<i class="bi bi-box-fill"></i>',
                     'active' => false,
-                    'url' => '/brands',
+                    'url' => '/product/brands',
                 ],
             ],
         ],
@@ -263,7 +257,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="index.html"><img src="{{ asset('assets/compiled/svg/logo.svg') }}" alt="Logo"
+                    <a href="{{ url('/') }}"><img src="{{ asset('assets/compiled/svg/logo.svg') }}" alt="Logo"
                             srcset="" /></a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">

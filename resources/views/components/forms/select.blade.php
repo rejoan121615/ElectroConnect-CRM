@@ -6,8 +6,8 @@
     <label class="mb-2" for="{{ $name }}">{{ $label }}</label>
     <select class="form-select @error($name) is-invalid @enderror" name="{{ $name }}" id="{{ $name }}">
         <option value="">Choose your options</option>
-        @foreach ($decodedOptions as $value => $vLabel)
-            <option value="{{ $value }}" {{ $value == old($name) ? 'selected' : '' }} >
+        @foreach ($decodedOptions as $itemVal => $vLabel)
+            <option value="{{ $itemVal }}" {{ $itemVal == old($name) ? 'selected' : ( isset($value) ? 'selected' : '') }} >
                 {{ $vLabel }}
             </option>
         @endforeach

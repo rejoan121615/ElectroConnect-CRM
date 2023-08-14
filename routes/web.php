@@ -35,9 +35,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/')->group(function () {
+
   Route::get('/', function () {
     return view('pages.home');
   });
+  
   Route::resource('product', ProductController::class);
   Route::resource('catagory', CategoryController::class);
   Route::resource('brands', BrandController::class);

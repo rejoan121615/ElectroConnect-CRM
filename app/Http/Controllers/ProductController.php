@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+
 // use carbon
 
 class ProductController extends Controller
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.product.index', [ 'pageTitle' => 'Products', 'products' => Product::get()]);
+        return view('pages.product.index', ['pageTitle' => 'Products', 'products' => Product::get()]);
     }
 
     /**
@@ -45,9 +46,6 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return back()->withInput()->with(['msg' => "Creation failed"]);
         }
-        
-        
-        
     }
 
     /**
@@ -62,9 +60,9 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      */
     // public function edit(Product $product)
-    public function edit()
+    public function edit(Product $product)
     {
-        return view('pages.product.create');
+        return view('pages.product.edit', ['product' => $product]);
     }
 
     /**
@@ -72,7 +70,17 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        // dd($product);
+        $formData = $request->all();
+
+        // store image 
+        if ($request->has('image_url')) {
+            $formData['image_url'] = $request->file('image_url')->store('products', 'public');
+        }
+
+        $product->update($formData);
+
+        return redirect()->route('product.index')->with(['msg' => "Product updated", "alert" => "success"]);
     }
 
     /**
