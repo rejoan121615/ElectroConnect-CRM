@@ -93,28 +93,16 @@
             'url' => '/inventory',
             'child' => [
                 [
-                    'name' => 'All Product List',
+                    'name' => 'All',
                     'icon' => '<i class="bi bi-box2"></i>',
                     'active' => false,
                     'url' => '/inventory',
                 ],
                 [
-                    'name' => 'Reorder Management',
-                    'icon' => '<i class="bi bi-card-checklist"></i>',
+                    'name' => 'Add New',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/inventory/edit',
-                ],
-                [
-                    'name' => 'Incoming Shipment',
-                    'icon' => '<i class="bi bi-arrow-down-circle"></i>',
-                    'active' => false,
-                    'url' => '/inventory',
-                ],
-                [
-                    'name' => 'Stock History',
-                    'icon' => '<i class="bi bi-clock"></i>',
-                    'active' => false,
-                    'url' => '/inventory',
+                    'url' => '/inventory/create',
                 ],
             ],
         ],
@@ -142,12 +130,12 @@
                     'active' => false,
                     'url' => '/supplier/catagory',
                 ],
-                [
-                    'name' => 'Supplier Orders',
-                    'icon' => '<i class="bi bi-list"></i>',
-                    'active' => false,
-                    'url' => '/supplier/brands',
-                ],
+                // [
+                //     'name' => 'Supplier Orders',
+                //     'icon' => '<i class="bi bi-list"></i>',
+                //     'active' => false,
+                //     'url' => '/supplier/brands',
+                // ],
             ],
         ],
         [
@@ -162,24 +150,18 @@
                     'active' => false,
                     'url' => '/customers/add',
                 ],
-                [
-                    'name' => 'Customer Communication',
-                    'icon' => '<i class="bi bi-chat-dots"></i>',
-                    'active' => false,
-                    'url' => '/customers/edit',
-                ],
-                [
-                    'name' => 'Support Tickets',
-                    'icon' => '<i class="bi bi-ticket-detailed"></i>',
-                    'active' => false,
-                    'url' => '/customers/support',
-                ],
-                [
-                    'name' => 'Customer Analytics',
-                    'icon' => '<i class="bi bi-file-earmark-person-fill"></i>',
-                    'active' => false,
-                    'url' => '/customers/analytics',
-                ],
+                // [
+                //     'name' => 'Customer Communication',
+                //     'icon' => '<i class="bi bi-chat-dots"></i>',
+                //     'active' => false,
+                //     'url' => '/customers/edit',
+                // ],
+                // [
+                //     'name' => 'Support Tickets',
+                //     'icon' => '<i class="bi bi-ticket-detailed"></i>',
+                //     'active' => false,
+                //     'url' => '/customers/support',
+                // ],
             ],
         ],
         [
