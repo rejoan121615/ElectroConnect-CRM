@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\CustomerTransection;
 use App\Models\PurchasedProduct;
+use App\Models\SaleDetails;
 use App\Models\Sales;
 use Illuminate\Database\Seeder;
 
@@ -29,6 +30,8 @@ class DatabaseSeeder extends Seeder
 
         CustomerTransection::factory(50)->create();
         PurchasedProduct::factory(50)->create();
+        Sales::factory(50)->create();
+        SaleDetails::factory(100)->create();
      
      
         // \App\Models\User::factory()->create([

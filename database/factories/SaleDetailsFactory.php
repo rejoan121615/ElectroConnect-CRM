@@ -17,7 +17,10 @@ class SaleDetailsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "sales_id" => fake()->numberBetween(1,50),
+            'product_id' => random_int(1,50),
+            'quantity' => random_int(1,10),
+            'price' => random_int(2000, 50000),
         ];
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->integer('pain_amount');
+            $table->integer('paid_amount');
             $table->string('payment_method');
             $table->string('trx_id');
             $table->string('discount');
