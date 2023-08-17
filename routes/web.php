@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxApiController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InventoryController;
@@ -56,4 +57,10 @@ Route::prefix('/')->group(function () {
   // Route::get('sales/invoice', [SalesController::class, 'invoice']);
   // Route::get('sales/return', [SalesController::class, 'return']);
   Route::resource('inventory', InventoryController::class);
+});
+
+
+Route::prefix('api')->group(function () {
+  // Route::get('customers', 'AjaxApiController@customers'); // Define your API endpoint
+  Route::get('customers', [AjaxApiController::class, 'customers']); // Define your API endpoint
 });

@@ -14,16 +14,16 @@ $(document).ready(function () {
     // sale create pages
     if ($("#sale-form").length) {
         $.ajax({
-            url: "http://127.0.0.1:8000/sales/customers",
+            url: "http://127.0.0.1:8000/api/customers",
             data: null,
             success: function (e) {
                 // console.log(e);
-                CustomerNameBox(e);
+                CustomerInfo(e);
             },
             dataType: "json",
         });
         // load data on customer name table
-        function CustomerNameBox(data) {
+        function CustomerInfo(data) {
             // generate option
             $.each(data, function (_, item) {
                 $("#customer-name").append(function () {
@@ -34,7 +34,6 @@ $(document).ready(function () {
             // Register the change event handler
             $("#customer-name").on("change", function () {
                 var selectedValue = $(this).val();
-
                 // find the object
                 let selected = data.find((data) => {
                     return data.id == selectedValue;
@@ -52,11 +51,21 @@ $(document).ready(function () {
                 }
             });
         }
-
         $("#customer-name").select2({
             tags: true,
             placeholder: "Write the name here ",
             style: null,
         });
+
+
+        // load product 
+        $.ajax({
+            url: '',
+            data: null,
+            success: function () {
+
+            },
+            dataType: 'json'
+        })
     }
 });

@@ -6,6 +6,7 @@ use App\Models\Sales;
 use App\Http\Requests\StoreSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Customer;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\DB;
 
@@ -28,10 +29,7 @@ class SalesController extends Controller
     }
 
 
-    // send json formate data for ajax 
-    public function customers () {
-        return response()->json(Customer::all());
-    }
+    
 
     /**
      * Store a newly created resource in storage.
