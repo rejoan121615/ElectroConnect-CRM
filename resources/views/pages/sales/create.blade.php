@@ -26,17 +26,19 @@
                                         <label for="name" >Product Name</label>
                                         <select name="name" id="customer-name" class=" form-select ">
                                             <option value="">Write your name here </option>
-                                            @foreach ($customers as $customer )
+                                            {{-- @foreach ($customers as $customer )
                                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <x-forms.input name="email" type="email" label="Email:" value="me@rejoan.com"
-                                            placeholder="Email address?" />
+                                        {{-- <x-forms.input name="email" type="email" label="Email:" value="me@rejoan.com"
+                                            placeholder="Email address?" /> --}}
+                                            <input type="text" id="email">
                                     </div>
                                     <div class="col-6">
-                                        <x-forms.input name="phone" label="Phone Number:" placeholder="Phone number?" />
+                                        <input type="text" id="phone">
+                                        {{-- <x-forms.input name="phone" label="Phone Number:" placeholder="Phone number?" /> --}}
                                     </div>
                                     <div class="col-md-12 col-12">
                                         <div class="row">
