@@ -23,10 +23,10 @@
                                         <h5>Customer Info:</h5>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <label for="name" >Product Name</label>
+                                        <label for="name">Product Name</label>
                                         <select name="name" id="customer-name" class=" form-select ">
                                             <option value="">Write your name here </option>
-                                            {{-- @foreach ($customers as $customer )
+                                            {{-- @foreach ($customers as $customer)
                                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                                             @endforeach --}}
                                         </select>
@@ -34,13 +34,19 @@
                                     <div class="col-6">
                                         {{-- <x-forms.input name="email" type="email" label="Email:" value="me@rejoan.com"
                                             placeholder="Email address?" /> --}}
-                                            <input type="text" id="email">
+                                        <label class=" form-label" for="email">Email Address: </label>
+                                        <input class="form-control" type="email" id="email" name="email">
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" id="phone">
+                                        <label class=" form-label" for="email">Phone Number: </label>
+                                        <input class="form-control" type="text" id="phone" name="phone">
                                         {{-- <x-forms.input name="phone" label="Phone Number:" placeholder="Phone number?" /> --}}
                                     </div>
-                                    <div class="col-md-12 col-12">
+                                    <div class=" col-12">
+                                        <label class=" form-label" for="address">Address: </label>
+                                        <input class="form-control" type="text" id="address" name="address">
+                                    </div>
+                                    {{-- <div class="col-md-12 col-12">
                                         <div class="row">
                                             <div class="col-6">
                                                 <x-forms.input name="address" label="Street 1:" placeholder="Street 1" />
@@ -60,7 +66,7 @@
                                                     placeholder="Postal Code" />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class=" col-12 mt-4 mb-2 ">
                                         <h5>Product Details:</h5>
                                     </div>
@@ -153,7 +159,9 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/custom/script.js') }}"></script>
 @endsection
