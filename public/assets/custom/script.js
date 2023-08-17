@@ -45,9 +45,9 @@ $(document).ready(function () {
                     $("#phone").val(selected.phone);
                     $("#address").val(selected.address);
                 } else {
-                     $("#email").val('');
-                     $("#phone").val('');
-                     $("#address").val('');
+                    $("#email").val("");
+                    $("#phone").val("");
+                    $("#address").val("");
                 }
             });
         }
@@ -57,15 +57,73 @@ $(document).ready(function () {
             style: null,
         });
 
-
-        // load product 
+        // load product ------------------------
         $.ajax({
-            url: '',
+            url: "http://127.0.0.1:8000/api/products",
             data: null,
-            success: function () {
-
+            success: function (data) {
+                ProductList(data);
             },
-            dataType: 'json'
-        })
+            dataType: "json",
+        });
+
+        let productTable = $("#product-table tbody");
+
+        function ProductList(data) {
+            $.each(data, function (_, item) {
+                $("#product").append(
+                    `<option value="${item.id}">${item.name}</option>`
+                );
+            });
+
+            $("#product").select2({
+                placeholder: "Select your product",
+                style: null,
+            });
+
+            $("#product").on("change", function () {
+                $("#add-product").attr("disabled", false);
+                let selectVal = $(this).val();
+                let selectedProduct = data.find((item) => item.id == selectVal);
+
+                $("#add-product")
+                    .off("click")
+                    .on("click", function (e) {
+                        e.preventDefault();
+                        let quantity = parseInt($("#quantity").val());
+
+                        let existingRow = productTable.find(
+                            `tr[data-product="${selectedProduct.id}"]`
+                        );
+
+                        if (existingRow.length > 0) {
+                            // Update quantity and price in existing row
+                            let existingQuantity = parseInt(
+                                existingRow.find(".quantity").text()
+                            );
+                            let newQuantity = existingQuantity + quantity;
+                            existingRow.find(".quantity").text(newQuantity);
+
+                            let price = parseFloat(selectedProduct.price);
+                            let newPrice = newQuantity * price;
+                            existingRow
+                                .find(".price")
+                                .text(newPrice.toFixed(2));
+                        } else {
+                            // Add new row to the table
+                            productTable.prepend(`
+                        <tr data-product="${selectedProduct.id}">
+                            <td>${selectedProduct.name}</td>
+                            <td class="quantity">${quantity}</td>
+                            <td class="price">${(
+                                parseFloat(selectedProduct.price) * quantity
+                            ).toFixed(2)}</td>
+                        </tr>
+                    `);
+                        }
+                    });
+            });
+        }
+
     }
 });

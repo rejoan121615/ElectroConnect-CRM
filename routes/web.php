@@ -61,6 +61,6 @@ Route::prefix('/')->group(function () {
 
 
 Route::prefix('api')->group(function () {
-  // Route::get('customers', 'AjaxApiController@customers'); // Define your API endpoint
-  Route::get('customers', [AjaxApiController::class, 'customers']); // Define your API endpoint
+  Route::get('customers', [AjaxApiController::class, 'customers']);
+  Route::get('products', [AjaxApiController::class, 'products']);
 });

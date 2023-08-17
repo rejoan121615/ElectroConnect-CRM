@@ -24,7 +24,7 @@
                                     </div>
                                     <div class="col-md-12 col-12">
                                         <label for="name">Product Name</label>
-                                        <select name="name" id="customer-name" class=" form-select ">
+                                        <select name="name" id="customer-name" class="form-select ">
                                             <option value="">Write your name here </option>
                                             {{-- @foreach ($customers as $customer)
                                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -73,14 +73,20 @@
                                     <div class="col-12 ">
                                         <div class="row">
                                             <div class="col-9">
-                                                <x-forms.input name="product" label="Search Product"
-                                                    placeholder="Type your product name" />
+                                                {{-- <x-forms.input name="product" label="Search Product"
+                                                    placeholder="Type your product name" /> --}}
+                                                    <label for="product">Product Name</label>
+                                                    <select name="product" id="product" class=" form-select ">
+                                                        <option value="">Type your product name</option>
+                                                    </select>
                                             </div>
                                             <div class="col-2">
-                                                <x-forms.input name="product" label="Quantity" placeholder="Ex: 5" />
+                                                {{-- <x-forms.input name="product" label="Quantity" placeholder="Ex: 5" /> --}}
+                                                <label for="quantity" class=" form-label">Quantity</label>
+                                                <input type="number" class=" form-control" placeholder="Ex. 5" id="quantity" value="1">
                                             </div>
                                             <div class="col-1">
-                                                <button id="add-new-product" class=" btn icon btn-primary mt-30 ">
+                                                <button disabled id="add-product" class=" btn icon btn-primary mt-30 ">
                                                     <i class="bi bi-plus-circle-fill"></i>
                                                 </button>
                                             </div>
@@ -90,7 +96,7 @@
                                         <h6>Product List:</h6>
                                     </div>
                                     <div class="col-12 ">
-                                        <table class="table">
+                                        <table class="table" id="product-table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Item Name</th>
@@ -99,21 +105,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Dell vostro 5720 I5/8GB/256GB SSD/ 2Gb Nvidia</td>
-                                                    <td>3</td>
-                                                    <td>85,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Asus Vivobook X515KA Celeron N4500 15.6" FHD Laptop</td>
-                                                    <td>2</td>
-                                                    <td>65,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Acer Extensa 15 EX215-54-37AH Core i3 11th Gen 15.6" FHD Laptop</td>
-                                                    <td>3</td>
-                                                    <td>85,000</td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td></td>
                                                     <td>Sub Total:</td>
