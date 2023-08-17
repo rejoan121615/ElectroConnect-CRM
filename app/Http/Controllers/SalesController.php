@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Sales;
 use App\Http\Requests\StoreSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
+use App\Models\Customer;
+use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -13,7 +16,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.sales.index')->with('sales', Sales::with(['customer', 'sale_details'])->get());
     }
 
     /**
@@ -21,7 +24,13 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.sales.create')->with(['customers' => Customer::all()]);
+    }
+
+
+    // send json formate data for ajax 
+    public function customers () {
+        return response()->json(Customer::all());
     }
 
     /**

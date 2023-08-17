@@ -36,12 +36,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
 
+  // api routes 
+  Route::get('sales/customers', [SalesController::class, 'customers']);
+
+
+
+  // resource route 
   Route::get('/', function () {
     return view('pages.home');
   });
-
-
-
   Route::resource('product', ProductController::class);
   Route::resource('category', CategoryController::class);
   Route::resource('brand', BrandController::class);

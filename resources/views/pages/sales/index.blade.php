@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('assets/compiled/css/dataTables.bootstrap5.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable-jquery.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable-jquery.css') }}">
 @endsection
 
 
@@ -17,14 +17,36 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Customer Name</th>
-                                <th>Total Product</th>
-                                <th >Total Amount</th>
+                                <th>Total Quantity</th>
+                                <th>Total Amount</th>
                                 <th>Profit</th>
                                 <th class=" no-sort " style=" width: 0">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            @forelse ($sales as $sale)
+                                <tr>
+                                    <td>{{ $sale->id }}</td>
+                                    <td>{{ $sale->customer->name }}</td>
+                                    <td>
+                                        {{ $sale->sale_details->sum('quantity')}}
+                                        
+                                    </td>
+                                    <td>
+                                        {{number_format($sale->paid_amount, 0, '.', ',') }} Tk
+                                    </td>
+                                    <td>
+                                        {{ $sale->sale_details->sum('price') - $sale->sale_details->sum('cost_price')}}
+                                    </td>
+                                    <td class=" btn-group" class=" w-0 ">
+                                        <a href="" class=" btn btn-primary ">View</a>
+                                        <a href="" class=" btn btn-info ">Edit</a>
+                                        <a href="" class=" btn btn-danger ">Delete</a>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+                            {{-- <tr>
                                 <td>1</td>
                                 <td>Mohd Rejoan</td>
                                 <td>8</td>
@@ -35,7 +57,7 @@
                                     <a href="" class=" btn btn-info ">Edit</a>
                                     <a href="" class=" btn btn-danger ">Delete</a>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

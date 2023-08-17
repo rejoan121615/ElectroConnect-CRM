@@ -21,6 +21,7 @@ class SaleDetailsFactory extends Factory
             'product_id' => random_int(1,50),
             'quantity' => random_int(1,10),
             'price' => random_int(2000, 50000),
+            'cost_price' => random_int(2000, 50000),
         ];
     }
 }
