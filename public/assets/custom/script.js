@@ -80,7 +80,6 @@ $(document).ready(function () {
                 placeholder: "Select your product",
                 style: null,
             });
-
             $("#product").on("change", function () {
                 $("#add-product").attr("disabled", false);
                 let selectVal = $(this).val();
@@ -112,18 +111,46 @@ $(document).ready(function () {
                         } else {
                             // Add new row to the table
                             productTable.prepend(`
-                        <tr data-product="${selectedProduct.id}">
-                            <td>${selectedProduct.name}</td>
-                            <td class="quantity">${quantity}</td>
-                            <td class="price">${(
-                                parseFloat(selectedProduct.price) * quantity
-                            ).toFixed(2)}</td>
-                        </tr>
-                    `);
+                                <tr data-product="${selectedProduct.id}">
+                                    <td>${selectedProduct.name}</td>
+                                    <td class="quantity">${quantity}</td>
+                                    <td class="price">${(
+                                        parseFloat(selectedProduct.price) * quantity
+                                    ).toFixed(2)}</td>
+                                    <td style="width: 0px;"><button class="btn btn-danger remove-product">Remove</button></td>
+                                </tr>
+                            `);
                         }
+
+                        calculateTotalPrice();
+
+                        // Handle Remove button click
+                        // $(".remove-product")
+                        //     .off("click")
+                        //     .on("click", function () {
+                        //         $(this).closest("tr").remove();
+                        //     });
                     });
             });
         }
 
+        productTable.on("click", ".remove-product", function () {
+            $(this).closest("tr").remove();
+            calculateTotalPrice(); // Update the total price
+        });
+
+        // total price
+        function calculateTotalPrice() {
+            let totalPrice = 0;
+            productTable.find("tr").each(function () {
+                let priceCell = $(this).find(".price");
+                if (priceCell.length > 0) {
+                    totalPrice += parseFloat(priceCell.text());
+                }
+            });
+            $("#total-price").text(totalPrice.toFixed(2));
+        }
+
+        
     }
 });
