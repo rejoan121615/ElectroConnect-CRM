@@ -63,4 +63,5 @@ Route::prefix('/')->group(function () {
 Route::prefix('api')->group(function () {
   Route::get('customers', [AjaxApiController::class, 'customers']);
   Route::get('products', [AjaxApiController::class, 'products']);
+  Route::post('store', [AjaxApiController::class, 'store']);
 });

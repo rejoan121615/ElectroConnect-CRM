@@ -115,9 +115,11 @@ $(document).ready(function () {
                                     <td>${selectedProduct.name}</td>
                                     <td class="quantity">${quantity}</td>
                                     <td class="price">${(
-                                        parseFloat(selectedProduct.price) * quantity
+                                        parseFloat(selectedProduct.price) *
+                                        quantity
                                     ).toFixed(2)}</td>
                                     <td style="width: 0px;"><button class="btn btn-danger remove-product">Remove</button></td>
+                                    <input type="hidden" name="products[]" value="${selectedProduct.id}" />
                                 </tr>
                             `);
                         }
@@ -151,6 +153,64 @@ $(document).ready(function () {
             $("#total-price").text(totalPrice.toFixed(2));
         }
 
-        
+          function validateForm() {
+              let isValid = true;
+
+              // Check if customer info fields are empty
+              if (
+                  $("#customer-name").val() === "" ||
+                  $("#email").val() === "" ||
+                  $("#phone").val() === "" ||
+                  $("#address").val() === ""
+              ) {
+                  isValid = false;
+              }
+
+              // Check if product info fields are empty
+              if ($("#product").val() === "" || $("#quantity").val() === "") {
+                  isValid = false;
+              }
+
+              return isValid;
+          }
+
+        $("#sale-form").submit(function (e) {
+            // e.preventDefault();
+
+            if (validateForm()) {
+                let formData = new FormData($(this)[0]);
+                let productData = [];
+
+                productTable.find("tr[data-product]").each(function () {
+                    let productId = $(this).attr("data-product");
+                    let quantity = $(this).find(".quantity").text();
+                    let price = $(this).find(".price").text();
+
+                    productData.push({ productId, quantity, price });
+                });
+
+                formData.append("products", JSON.stringify(productData));
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/store",
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        // Handle success response
+                        // console.log(response);
+                        console.log(JSON.parse(response));
+                    },
+                    error: function (error) {
+                        // Handle error response
+                        console.log('got error => ', error);
+                    },
+                });
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
+
     }
 });
