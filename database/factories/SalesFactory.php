@@ -18,11 +18,13 @@ class SalesFactory extends Factory
      */
     public function definition(): array
     {
+        $paymentMethod = fake()->numberBetween(1,2);
+
         return [
             'customer_id' => random_int(1,50),
             'paid_amount' => fake()->numberBetween(2000, 200000),
-            'payment_method' => array_rand(['bkash', 'cash']),
-            'trx_id' => Str::random(35),
+            'payment_method' => $paymentMethod,
+            'trx_id' => $paymentMethod == 2 ? Str::random(35) : null,
             'discount' => fake()->numberBetween(10,100),
             'comment' => fake()->sentence(4)
         ];

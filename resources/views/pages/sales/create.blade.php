@@ -117,6 +117,9 @@
                                                 </button>
                                             </div>
                                         </div>
+                                        @error('total_amount')
+                                            <p class=" text-danger">Please select atleast one product</p>
+                                        @enderror
                                     </div>
                                     <div class=" col-12 mt-4 mb-2 ">
                                         <h6>Product List:</h6>
@@ -151,7 +154,7 @@
                                                         <h6 class=" text-primary mb-0 ">Total:</h6>
                                                     </td>
                                                     <td id="total-price" class=" text-primary fw-bold ">$0.00</td>
-                                                    <td></td>
+                                                    <td><input id="total_amount" type="hidden" name="total_amount"></td>
                                                 </tr>
                                             </tbody>
                                         </table>

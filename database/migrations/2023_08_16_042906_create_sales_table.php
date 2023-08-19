@@ -19,9 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->integer('paid_amount');
             $table->string('payment_method');
-            $table->string('trx_id');
-            $table->string('discount');
-            $table->string('comment');
+            $table->string('trx_id')->nullable();
+            $table->string('discount')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('customers');
         });

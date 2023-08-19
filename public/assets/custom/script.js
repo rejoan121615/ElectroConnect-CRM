@@ -148,6 +148,7 @@ $(document).ready(function () {
                 }
             });
             $("#total-price").text(totalPrice.toFixed(2));
+            $("#total_amount").val(totalPrice);
         }
 
         // select button 
@@ -163,8 +164,6 @@ $(document).ready(function () {
 
         PaymentHandler();
 
-        $("#payment_method_select").on('change', function () {
-            paymentHandler();
-        })
+        $("#payment_method_select").on('change', PaymentHandler);
     }
 });
