@@ -41,7 +41,11 @@
                                     <td class=" btn-group" class=" w-0 ">
                                         <a href="" class=" btn btn-primary ">View</a>
                                         <a href="" class=" btn btn-info ">Edit</a>
-                                        <a href="" class=" btn btn-danger ">Delete</a>
+                                        <form action="{{ route('sales.destroy', $sale->id )}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class=" btn btn-danger ">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

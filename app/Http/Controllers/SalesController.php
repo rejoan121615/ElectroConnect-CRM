@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\SaleDetails;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\DB;
 
@@ -37,15 +38,12 @@ class SalesController extends Controller
     public function store(StoreSalesRequest $StoreSales)
     {
 
-        // dd($StoreSales->all());
-
+        // check if user exists or create a new one 
         $userId = null;
 
         if (is_numeric($StoreSales->input('name')) && $StoreSales->input('name') >= 1) {
-            // Handle numeric input within the range 1-1000
             $userId = $StoreSales->input('name');
         } else {
-            // new name so generate customer 
             $userData = [
                 'name' => $StoreSales->input('name'),
                 'email' => $StoreSales->input('email'),
@@ -56,22 +54,9 @@ class SalesController extends Controller
             $userId = $newUser->id;
         }
 
-        // array:10 [▼ // app\Http\Controllers\SalesController.php:40
-        //     "_token" => "KcWUwlkCNxBCXBFJF8CwZL44emJNfhdWzmqzAmSn"
-        //     "name" => "2"
-        //     "email" => "jaiden87@yahoo.com"
-        //     "phone" => "(551) 297-6344"
-        //     "address" => "5652 Casimer FreewayArjunshire, SD 17601"
-        //     "payment_method" => "1"
-        //     "trx_id" => null
-        //     "comment" => null
-        //     "products" => array:3 [▶]
-        //     "total_amount" => "1326658"
-        //     ]
-
 
         // store in sales 
-        $saleList = Sales::create([
+        $newSales = Sales::create([
             "customer_id" => $userId,
             "paid_amount" => $StoreSales->input('total_amount'),
             "payment_method" => $StoreSales->input('payment_method'),
@@ -79,11 +64,26 @@ class SalesController extends Controller
             "discount" => null,
             "comment" => $StoreSales->input('comment')
         ]);
+        
 
-        // dd($saleList);
-        // dd($StoreSales->input('name'));
-        // dd($StoreSales->all());
+        // create all saledetails record
+        foreach ($StoreSales->input('products') as $product) {
+            list($productId, $productQuantity) = explode('|', $product);
 
+            // get all the product based on id 
+            $grabbedProduct = Product::find($productId);
+            // create new record 
+            SaleDetails::create([
+                'sales_id' => $newSales->id,
+                'product_id' => $productId,
+                'quantity' => $productQuantity,
+                'price' => $grabbedProduct->price,
+                'cost_price' => $grabbedProduct->cost_price
+            ]);
+        }
+
+
+        return redirect()->route('sales.index');
     }
 
     /**
@@ -113,8 +113,11 @@ class SalesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sales $sales)
+    public function destroy(Sales $sale)
     {
-        //
+        // dd($sale->getAttributes());
+        $sale->delete();
+
+        return redirect()->route('sales.index');
     }
 }

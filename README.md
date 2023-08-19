@@ -26,7 +26,7 @@
     </ul>
     <p><strong>Database Design:</strong></p>
     <ul>
-        <li><img src="https://i.ibb.co/4SHrzPT/Project-Database-design.jpg" alt="Project-Database-design"></li>
+        <li><a href="https://ibb.co/SmzCbRn"><img src="https://i.ibb.co/4SHrzPT/Project-Database-design.jpg" alt="Project-Database-design" border="0"></a></li>
     </ul>
 
 </body>

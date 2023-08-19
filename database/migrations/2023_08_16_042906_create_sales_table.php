@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('discount')->nullable();
             $table->string('comment')->nullable();
             $table->timestamps();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 
