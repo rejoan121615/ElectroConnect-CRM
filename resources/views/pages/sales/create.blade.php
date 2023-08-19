@@ -23,37 +23,77 @@
                                         <h5>Customer Info:</h5>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <label for="name">Product Name</label>
-                                        <select name="name" id="customer-name" class="form-select " required>
+                                        <label for="name">Customer Name</label>
+                                        <select name="name" id="customer-name"
+                                            class="form-select @error('name') is-invalid @enderror ">
                                             <option value="">Write your name here </option>
+                                            @if (old('name'))
+                                                <option id="old_name" value="1" selected></option>
+                                            @endif
                                         </select>
+                                        @error('name')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class="col-6">
                                         <label class=" form-label" for="email">Email Address: </label>
-                                        <input class="form-control" type="email" id="email" name="email" required>
+                                        <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}">
+                                        @error('email')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class="col-6">
-                                        <label class=" form-label" for="email">Phone Number: </label>
-                                        <input class="form-control" type="text" id="phone" name="phone" required>
+                                        <label class=" form-label" for="phone">Phone Number: </label>
+                                        <input class="form-control @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" value=" {{ old('phone') }}">
+                                        @error('phone')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class=" col-12">
                                         <label class=" form-label" for="address">Address: </label>
-                                        <input class="form-control" type="text" id="address" name="address" required>
+                                        <input class="form-control @error('address') is-invalid @enderror" type="text" id="address" name="address" value="{{ old('address')}}">
+                                        @error('address')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
-                                    <div class=" col-3 ">
-                                        <label for="trx_id" class=" form-label">Trx Id / Transection Id (Bkash)</label>
-                                        <select name="payment_method" id="" class=" form-select">
-                                            <option value="1">Cash</option>
-                                            <option value="1">Bkash</option>
+                                    <div class=" col-12 " id="payment_method">
+                                        <label for="payment_method_select" class=" form-label">Payment Method</label>
+                                        <select name="payment_method" class=" form-select @error('payment_method') is-invalid @enderror " id="payment_method_select">
+                                            <option value="">Select a paytment method</option>
+                                            <option value="1" {{ old('payment_method') == 1 ? 'selected' : ''}}>Cash</option>
+                                            <option value="2" {{ old('payment_method') == 2 ? 'selected' : ''}}>Bkash</option>
                                         </select>
+                                        @error('payment_method')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
-                                    <div class="col-9">
-                                        <label for="trx_id" class="form-label">Trx Id / Transection Id (Bkash)</label>
-                                        <input type="text" class="form-control " name="trx_id" >
+                                    <div class="col-9 d-none " id="trx_id">
+                                        <label for="trx_id_input" class="form-label">Trx Id / Transection Id (Bkash)</label>
+                                        <input type="text" class="form-control @error('trx_id') is-invalid @enderror  " name="trx_id" id="trx_id_input">
+                                        @error('trx_id')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class=" col-12">
                                         <label for="comment" class="form-label">Comments</label>
-                                        <textarea name="comment" id="" cols="30" rows="10" class=" w-100 form-control " ></textarea>
+                                        <textarea name="comment" id="" cols="30" rows="10" class=" w-100 form-control @error('comment') is-invalid @enderror   "></textarea>
+                                        @error('comment')
+                                            <p class=" invalid-feedback pb-0 ">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class=" col-12 mt-4 mb-2 ">
                                         <h5>Product Details:</h5>
@@ -62,14 +102,14 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <label for="product">Product Name</label>
-                                                <select id="product" class=" form-select " required>
+                                                <select id="product" class=" form-select ">
                                                     <option value="">Type your product name</option>
                                                 </select>
                                             </div>
                                             <div class="col-1">
                                                 <label for="quantity" class=" form-label">Quantity</label>
                                                 <input type="number" class=" form-control" placeholder="Ex. 5"
-                                                    id="quantity" value="1" required>
+                                                    id="quantity" value="1">
                                             </div>
                                             <div class="col-1">
                                                 <button disabled id="add-product" class=" btn icon btn-primary mt-30 ">

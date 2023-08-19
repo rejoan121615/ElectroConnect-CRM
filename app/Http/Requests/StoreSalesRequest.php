@@ -22,7 +22,12 @@ class StoreSalesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'email' => ['required', 'email'],
+            'phone' => ['required'],
+            'address' => ['required'],
+            'payment_method' => 'required',
+            'trx_id' => $this->input('payment_method') == '2' ? 'required|string' : 'nullable',
         ];
     }
 }

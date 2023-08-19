@@ -17,17 +17,22 @@ $(document).ready(function () {
             url: "http://127.0.0.1:8000/api/customers",
             data: null,
             success: function (e) {
-                // console.log(e);
+                
+                // load the old data if exists 
+
                 CustomerInfo(e);
             },
             dataType: "json",
         });
         // load data on customer name table
         function CustomerInfo(data) {
+            // find old selected 
+            let oldOption = $("#old_name").attr('value');
+            
             // generate option
             $.each(data, function (_, item) {
                 $("#customer-name").append(function () {
-                    return `<option value="${item["id"]}">${item["name"]}</option>`;
+                    return `<option value="${item["id"] }" ${oldOption == item['id'] ? 'selected' : ''}>${item["name"]}</option>`;
                 });
             });
 
@@ -119,19 +124,11 @@ $(document).ready(function () {
                                         quantity
                                     ).toFixed(2)}</td>
                                     <td style="width: 0px;"><button class="btn btn-danger remove-product">Remove</button></td>
-                                    <input type="hidden" name="products[]" value="${selectedProduct.id}" />
+                                    <input type="hidden" name="products[]" value="${selectedProduct.id}|${quantity}" />
                                 </tr>
                             `);
                         }
-
                         calculateTotalPrice();
-
-                        // Handle Remove button click
-                        // $(".remove-product")
-                        //     .off("click")
-                        //     .on("click", function () {
-                        //         $(this).closest("tr").remove();
-                        //     });
                     });
             });
         }
@@ -153,64 +150,21 @@ $(document).ready(function () {
             $("#total-price").text(totalPrice.toFixed(2));
         }
 
-          function validateForm() {
-              let isValid = true;
+        // select button 
+        function PaymentHandler() {
+             if ($("#payment_method_select").val() == 1) {
+                 $("#payment_method").addClass("col-12").removeClass("col-3");
+                 $("#trx_id").addClass("d-none").removeClass("d-block");
+             } else if ($("#payment_method_select").val() == 2) {
+                 $("#payment_method").addClass("col-3").removeClass("col-12");
+                 $("#trx_id").addClass("d-block").removeClass("d-none");
+             }
+        }
 
-              // Check if customer info fields are empty
-              if (
-                  $("#customer-name").val() === "" ||
-                  $("#email").val() === "" ||
-                  $("#phone").val() === "" ||
-                  $("#address").val() === ""
-              ) {
-                  isValid = false;
-              }
+        PaymentHandler();
 
-              // Check if product info fields are empty
-              if ($("#product").val() === "" || $("#quantity").val() === "") {
-                  isValid = false;
-              }
-
-              return isValid;
-          }
-
-        $("#sale-form").submit(function (e) {
-            // e.preventDefault();
-
-            if (validateForm()) {
-                let formData = new FormData($(this)[0]);
-                let productData = [];
-
-                productTable.find("tr[data-product]").each(function () {
-                    let productId = $(this).attr("data-product");
-                    let quantity = $(this).find(".quantity").text();
-                    let price = $(this).find(".price").text();
-
-                    productData.push({ productId, quantity, price });
-                });
-
-                formData.append("products", JSON.stringify(productData));
-                $.ajax({
-                    url: "http://127.0.0.1:8000/api/store",
-                    method: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        // Handle success response
-                        // console.log(response);
-                        console.log(JSON.parse(response));
-                    },
-                    error: function (error) {
-                        // Handle error response
-                        console.log('got error => ', error);
-                    },
-                });
-            } else {
-                alert("Please fill in all required fields.");
-            }
-        });
-
-
+        $("#payment_method_select").on('change', function () {
+            paymentHandler();
+        })
     }
 });
