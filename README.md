@@ -24,5 +24,10 @@
     <ul>
         <li>Linux Shared Hosting</li>
     </ul>
+    <p><strong>Database Design:</strong></p>
+    <ul>
+        <li><img src="https://i.ibb.co/4SHrzPT/Project-Database-design.jpg" alt="Project-Database-design"></li>
+    </ul>
+
 </body>
 </html>
