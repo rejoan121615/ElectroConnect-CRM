@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <section id="multiple-column-form">
+    <section>
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
@@ -15,9 +15,9 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" id="sale-form" method="POST" action="{{ route('sales.store') }}"
-                                enctype="multipart/form-data">
+                            <form class="form" id="sale-edit-form" method="POST" action="{{ route('sales.update', $sale->id ) }}">
                                 @csrf
+                                @method('put')
                                 <div class="row gy-2">
                                     <div class=" col-12 mb-2 ">
                                         <h5>Customer Info:</h5>
@@ -50,6 +50,9 @@
                                                 <label for="product">Product Name</label>
                                                 <select id="product" class=" form-select ">
                                                     <option value="">Type your product name</option>
+                                                    @foreach ($products as $product )
+                                                      <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-1">
@@ -83,13 +86,13 @@
                                             <tbody>
                                                 @foreach ($sale->sale_details()->get() as $details)
                                                     <tr data-product="{{ $details->id }}">
-                                                        <td></td>
+                                                        <td>{{ $details->products->name }}</td>
                                                         <td class="quantity">{{ $details->quantity }}</td>
                                                         <td class="price">{{ $details->price }}</td>
                                                         <td style="width: 0px;"><button
                                                                 class="btn btn-danger remove-product">Remove</button></td>
-                                                        {{-- <input type="hidden" name="products[]"
-                                                            value="${selectedProduct.id}|${quantity}" /> --}}
+                                                        <input type="hidden" name="products[]"
+                                                            value="{{ $details->id }}|${ $details->quantity }" />
                                                     </tr>
                                                 @endforeach
                                                 <tr>
@@ -135,5 +138,5 @@
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    {{-- <script src="{{ asset('assets/custom/script.js') }}"></script> --}}
+    <script src="{{ asset('assets/custom/script.js') }}"></script>
 @endsection

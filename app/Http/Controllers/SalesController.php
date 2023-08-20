@@ -18,6 +18,7 @@ class SalesController extends Controller
      */
     public function index()
     {
+        // dd('mohd rejoan');
         return view('pages.sales.index')->with('sales', Sales::with(['customer', 'sale_details'])->get());
     }
 
@@ -99,20 +100,29 @@ class SalesController extends Controller
      */
     public function edit(Sales $sale)
     {
-
-        // find customer 
-        // $customer = $sale->customer->getAttributes();
-        // dd($customer);
-        // dd($sale->sale_details()->get());
-        return view('pages.sales.edit', ['sale' => $sale]);
+        return view('pages.sales.edit', ['sale' => $sale, 'products' => Product::all()]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSalesRequest $request, Sales $sales)
+    public function update(UpdateSalesRequest $request, Sales $sale)
     {
-        //
+        dd($request->all());
+        // update customer 
+        $sale->customer->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address')
+        ]);
+        
+        // update sale 
+        $sale->update([
+            "paid_amount" => $request->input('total_amount'),
+            "discount" => null,
+            "comment" => $request->input('comment')
+        ]);
     }
 
     /**
