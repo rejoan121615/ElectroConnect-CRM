@@ -4,6 +4,7 @@ use App\Http\Controllers\AjaxApiController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
@@ -49,6 +50,7 @@ Route::prefix('/')->group(function () {
   Route::resource('product', ProductController::class);
   Route::resource('category', CategoryController::class);
   Route::resource('brand', BrandController::class);
+  Route::get('sales/invoice', [SalesController::class, 'invoice']);
   Route::resource('sales', SalesController::class);
 
 

@@ -281,23 +281,26 @@
                     <table class="table" id="table1">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>City</th>
+                                <th>Total Quantity</th>
+                                <th>Total Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Graiden</td>
-                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                <td>076 4820 8838</td>
-                                <td>Offenburg</td>
+                            @foreach ($sales as $sale)
+                                <tr>
+                                <td>{{ $sale->id }}</td>
+                                <td>{{ $sale->customer->name }}</td>
+                                <td>{{ $sale->sale_details->sum('quantity') }}</td>
+                                <td>{{ $sale->paid_amount }} Tk</td>
                                 <td>
                                     <button class=" btn btn-primary ">Print</button>
                                 </td>
-                            </tr>
+                            </tr>                                
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
