@@ -39,9 +39,9 @@
                                         {{ $sale->sale_details->sum('price') - $sale->sale_details->sum('cost_price')}}
                                     </td>
                                     <td class=" btn-group" class=" w-0 ">
-                                        <a href="" class=" btn btn-primary ">View</a>
-                                        <a href="" class=" btn btn-info ">Edit</a>
-                                        <form action="{{ route('sales.destroy', $sale->id )}}" method="post">
+                                        <a href="{{ route('sales.show', $sale->id ) }}" class=" btn btn-primary ">View</a>
+                                        <a href="{{ route('sales.edit', $sale->id ) }}" class=" btn btn-info ">Edit</a>
+                                        <form action="{{ route('sales.destroy', $sale->id ) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class=" btn btn-danger ">Delete</button>

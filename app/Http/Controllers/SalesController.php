@@ -97,9 +97,14 @@ class SalesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sales $sales)
+    public function edit(Sales $sale)
     {
-        //
+
+        // find customer 
+        // $customer = $sale->customer->getAttributes();
+        // dd($customer);
+        // dd($sale->sale_details()->get());
+        return view('pages.sales.edit', ['sale' => $sale]);
     }
 
     /**
@@ -118,6 +123,6 @@ class SalesController extends Controller
         // dd($sale->getAttributes());
         $sale->delete();
 
-        return redirect()->route('sales.index');
+        return redirect()->route('sales.index')->with(['msg' => 'Deleted successfully', 'alert' => 'alert-danger']);
     }
 }
