@@ -135,7 +135,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                @if (old('products'))
+                                                    @foreach (old('products') as $product)
+                                                    @php
+                                                        list($proId, $proQuantity) = explode('|', $product)
+                                                    @endphp
+                                                        <tr data-product="{{ $prodId }}">
+                                                            <td>{{ $products->find($proId)->name }}</td>
+                                                            <td class="quantity">{{ $proQuantity }}</td>
+                                                            <td class="price">{{ $products->find($proId)->price }}</td>
+                                                            <td style="width: 0px;"><button class="btn btn-danger remove-product">Remove</button></td>
+                                                            <input type="hidden" name="products[]" value="{{ $proId }}|{{ $proQuantity }}" />
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                
+                                                {{-- {{
+                                                    dd(old('products'))
+                                                }} --}}
                                                 <tr>
                                                     <td></td>
                                                     <td>Sub Total:</td>
@@ -153,7 +170,7 @@
                                                     <td>
                                                         <h6 class=" text-primary mb-0 ">Total:</h6>
                                                     </td>
-                                                    <td id="total-price" class=" text-primary fw-bold ">$0.00</td>
+                                                    <td id="total-price" class=" text-primary fw-bold ">{{ old('total_amount') ?? '$0.00'}}</td>
                                                     <td><input id="total_amount" type="hidden" name="total_amount"></td>
                                                 </tr>
                                             </tbody>

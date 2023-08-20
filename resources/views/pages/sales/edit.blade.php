@@ -23,20 +23,21 @@
                                         <h5>Customer Info:</h5>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <x-forms.input name="name" label="Customer Name:"
-                                            value="{{ $sale->customer->name }}" />
+                                        <label class=" form-label" for="name">Customer Name:</label>
+                                        <input type="text" value="{{ $sale->customer->name }}" name="name" class=" form-control " disabled>
                                     </div>
                                     <div class="col-6">
-                                        <x-forms.input name="email" label="Email Address"
-                                            value="{{ $sale->customer->email }}" />
+                                        <label class=" form-label" for="email">Email Address:</label>
+                                        <input type="text" value="{{ $sale->customer->email }}" name="email" class=" form-control " disabled>
                                     </div>
                                     <div class="col-6">
-                                        <x-forms.input name="text" label="Phone Number:"
-                                            value="{{ $sale->customer->phone }}" />
+                                        <label class=" form-label" for="phone">Phone Number:</label>
+                                        <input type="text" value="{{ $sale->customer->phone }}" name="phone" class=" form-control " disabled>
+                                       
                                     </div>
                                     <div class=" col-12">
-                                        <x-forms.input name="address" label="Address:"
-                                            value="{{ $sale->customer->address }}" />
+                                        <label for="address">Address:</label>
+                                        <input type="text" value="{{ $sale->customer->address }}" name="address" class=" form-control " disabled>
                                     </div>
                                     <div class=" col-12">
                                         <x-forms.textarea name="comment" value="{{ $sale->comment }}" label="Comments" />
@@ -92,7 +93,7 @@
                                                         <td style="width: 0px;"><button
                                                                 class="btn btn-danger remove-product">Remove</button></td>
                                                         <input type="hidden" name="products[]"
-                                                            value="{{ $details->id }}|${ $details->quantity }" />
+                                                            value="{{ $details->id }}|{{ $details->quantity }}" />
                                                     </tr>
                                                 @endforeach
                                                 <tr>
@@ -113,7 +114,7 @@
                                                         <h6 class=" text-primary mb-0 ">Total:</h6>
                                                     </td>
                                                     <td id="total-price" class=" text-primary fw-bold ">{{ $sale->paid_amount }}</td>
-                                                    <td><input id="total_amount" type="hidden" name="total_amount"></td>
+                                                    <td><input id="total_amount" type="hidden" name="total_amount" value="{{ $sale->paid_amount }}"></td>
                                                 </tr>
                                             </tbody>
                                         </table>

@@ -27,7 +27,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('pages.sales.create')->with(['customers' => Customer::all()]);
+        return view('pages.sales.create')->with(['customers' => Customer::all(), 'products' => Product::all()]);
     }
 
 
@@ -84,7 +84,7 @@ class SalesController extends Controller
         }
 
 
-        return redirect()->route('sales.index');
+        return redirect()->route('sales.index')->with(['msg' => "Created successfully"]);
     }
 
     /**
@@ -108,21 +108,51 @@ class SalesController extends Controller
      */
     public function update(UpdateSalesRequest $request, Sales $sale)
     {
-        dd($request->all());
-        // update customer 
-        $sale->customer->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'address' => $request->input('address')
+        // update sale 
+        $updatedSale = $sale->update([
+            "comment" => $request->input('comment'),
+            "paid_amount" => $request->input('total_amount')
         ]);
         
-        // update sale 
-        $sale->update([
-            "paid_amount" => $request->input('total_amount'),
-            "discount" => null,
-            "comment" => $request->input('comment')
-        ]);
+        // Remove all the old sale details table
+        foreach($sale->sale_details as $sale) {
+            $sale->delete();
+        }
+
+        // create new table 
+        foreach ($request->input('products') as $product) {
+            list($productId, $productQuantity) = explode('|', $product);
+
+            // get all the product based on id 
+            $grabbedProduct = Product::find($productId);
+            dd($grabbedProduct->id);
+            // create new record 
+            // dd($productQuantity);
+            // SaleDetails::create([
+            //     'sales_id' => $sale->id,
+            //     'product_id' => (int) $productId,
+            //     'quantity' => (int) $productQuantity,
+            //     'price' => $grabbedProduct->price,
+            //     'cost_price' => $grabbedProduct->cost_price
+            // ]);
+            // dd([
+            //     'sales_id' => $sale->id,
+            //     'product_id' => (int) $productId,
+            //     'quantity' => (int) $productQuantity,
+            //     'price' => $grabbedProduct->price,
+            //     'cost_price' => $grabbedProduct->cost_price
+            // ]);
+            // $sale->sale_details->create([
+            //     'sales_id' => $sale->id,
+            //     'product_id' => $productId,
+            //     'quantity' => $productQuantity,
+            //     'price' => $grabbedProduct->price,
+            //     'cost_price' => $grabbedProduct->cost_price
+            // ]);
+        }
+        
+
+        return redirect()->route('sales.index')->with(['msg' => "Sales details updated"]);
     }
 
     /**

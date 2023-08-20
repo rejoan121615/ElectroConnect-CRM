@@ -146,8 +146,9 @@ $(document).ready(function () {
             let totalPrice = 0;
             productTable.find("tr").each(function () {
                 let priceCell = $(this).find(".price");
+                let quantityCell = $(this).find(".quantity");
                 if (priceCell.length > 0) {
-                    totalPrice += parseFloat(priceCell.text());
+                    totalPrice += parseFloat((priceCell.text() * quantityCell.text()));
                 }
             });
             $("#total-price").text(totalPrice.toFixed(2));
@@ -252,17 +253,20 @@ $(document).ready(function () {
         });
 
         // total price
-        function calculateTotalPrice() {
-            let totalPrice = 0;
-            productTable.find("tr").each(function () {
-                let priceCell = $(this).find(".price");
-                if (priceCell.length > 0) {
-                    totalPrice += parseFloat(priceCell.text());
-                }
-            });
-            $("#total-price").text(totalPrice.toFixed(2));
-            $("#total_amount").val(totalPrice);
-        }
+       function calculateTotalPrice() {
+           let totalPrice = 0;
+           productTable.find("tr").each(function () {
+               let priceCell = $(this).find(".price");
+               let quantityCell = $(this).find(".quantity");
+               if (priceCell.length > 0) {
+                   totalPrice += parseFloat(
+                       priceCell.text() * quantityCell.text()
+                   );
+               }
+           });
+           $("#total-price").text(totalPrice.toFixed(2));
+           $("#total_amount").val(totalPrice);
+       }
 
         // select button
         function PaymentHandler() {

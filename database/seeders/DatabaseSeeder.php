@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
 
         CustomerTransection::factory(50)->create();
         PurchasedProduct::factory(50)->create();
-        Sales::factory(50)->create();
-        SaleDetails::factory(100)->create();
+        // Sales::factory(50)->create();
+        // SaleDetails::factory(100)->create();
      
      
         // \App\Models\User::factory()->create([
