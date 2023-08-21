@@ -3,6 +3,8 @@
 
 
 @section('content')
+
+
   <div class="card">
     <div class="card-body">
       <table class="table" id="table">
@@ -24,7 +26,7 @@
                 <td>{{ $supplier->phone }}</td>
                 <td>
                     <div class=" btn-group">
-                        <a href="{{ route('supplier.show', $supplier->id)}}" class=" btn btn-primary">View</a>
+                        {{-- <a href="{{ route('supplier.show', $supplier->id)}}" class=" btn btn-primary">View</a> --}}
                         <a href="{{ route('supplier.edit', $supplier->id )}}" class=" btn btn-secondary ">Edit</a>
                         <form action="{{ route('supplier.destroy', $supplier->id)}}" method="POST">
                             @csrf

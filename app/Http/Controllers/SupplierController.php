@@ -38,8 +38,7 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        // dd('hello rejoan');
-        
+        return view('pages.supplier.show', ['supplier' => $supplier]);        
     }
 
     /**
