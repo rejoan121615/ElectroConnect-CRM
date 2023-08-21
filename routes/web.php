@@ -7,6 +7,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,7 +59,8 @@ Route::prefix('/')->group(function () {
 
   // Route::get('sales/invoice', [SalesController::class, 'invoice']);
   // Route::get('sales/return', [SalesController::class, 'return']);
-  Route::resource('inventory', InventoryController::class);
+  Route::resource('/inventory', InventoryController::class);
+  Route::resource('/supplier', SupplierController::class);
 });
 
 

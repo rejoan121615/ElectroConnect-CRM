@@ -116,13 +116,13 @@
                     'name' => 'Supplier List',
                     'icon' => '<i class="bi bi-list-stars"></i>',
                     'active' => false,
-                    'url' => '/supplier/add',
+                    'url' => '/supplier',
                 ],
                 [
                     'name' => 'Add New',
                     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
                     'active' => false,
-                    'url' => '/supplier/edit',
+                    'url' => '/supplier/create',
                 ],
                 [
                     'name' => 'Edit Supplier',

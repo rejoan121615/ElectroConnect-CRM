@@ -13,7 +13,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.supplier.index', ['suppliers' => Supplier::all()]);
     }
 
     /**
@@ -21,7 +21,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.supplier.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class SupplierController extends Controller
      */
     public function store(StoreSupplierRequest $request)
     {
-        //
+        Supplier::create($request->all());
+        return redirect()->route('supplier.index')->with('msg', "New supplier created");
     }
 
     /**
@@ -37,7 +38,8 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        // dd('hello rejoan');
+        
     }
 
     /**
@@ -45,7 +47,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('pages.supplier.edit',['supplier' => $supplier]);
     }
 
     /**
@@ -53,7 +55,10 @@ class SupplierController extends Controller
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
-        //
+        // update data 
+        $supplier->update($request->all());
+
+        return redirect()->route('supplier.index')->with(['msg' => 'Supplier updated successfully']);
     }
 
     /**
@@ -61,6 +66,8 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        $supplier->delete();
+
+        return redirect()->route('supplier.index')->with(['msg' => 'Supplier Deleted', 'alert' => 'fail']); 
     }
 }
