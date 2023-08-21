@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTasksRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreTasksRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,7 @@ class StoreTasksRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "description" => ['required', 'max:250', Rule::unique('tasks', 'description')]
         ];
     }
 }

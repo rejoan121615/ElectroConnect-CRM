@@ -22,7 +22,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('pages.tasks.create');
+        
     }
 
     /**
@@ -30,7 +30,12 @@ class TasksController extends Controller
      */
     public function store(StoreTasksRequest $request)
     {
-        //
+        // dd($request->all());
+        Tasks::create(['user_id' => null, 'description' => $request->input('description'), 'complete' => false]);
+        return view('pages.tasks.index', [
+            'incomplete' => Tasks::where('complete', 0)->get(),
+            'complete' => Tasks::where('complete', 1)->get()
+        ])->with('msg', 'Task created successfully');
     }
 
     /**
@@ -52,9 +57,14 @@ class TasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTasksRequest $request, Tasks $tasks)
+    public function update(UpdateTasksRequest $request, Tasks $task)
     {
-        //
+        // dd($task->getAttributes());
+        $task->update(['complete' => true]);
+        return view('pages.tasks.index', [
+            'incomplete' => Tasks::where('complete', 0)->get(),
+            'complete' => Tasks::where('complete', 1)->get()
+        ])->with('msg', 'Task marked as complete');
     }
 
     /**

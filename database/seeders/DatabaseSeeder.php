@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         Sales::factory(50)->create();
         SaleDetails::factory(100)->create();
         Supplier::factory(50)->create();
-        Tasks::factory(50)->create();
+        Tasks::factory(10)->create();
         
      
      
