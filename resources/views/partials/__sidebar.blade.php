@@ -156,12 +156,12 @@
                     'active' => false,
                     'url' => '/customer/create',
                 ],
-                [
-                    'name' => 'Edit Supplier',
-                    'icon' => '<i class="bi bi-pencil-fill"></i>',
-                    'active' => false,
-                    'url' => '/customer/catagory',
-                ],
+                // [
+                //     'name' => 'Edit Supplier',
+                //     'icon' => '<i class="bi bi-pencil-fill"></i>',
+                //     'active' => false,
+                //     'url' => '/customer/catagory',
+                // ],
                 // [
                 //     'name' => 'Supplier Orders',
                 //     'icon' => '<i class="bi bi-list"></i>',

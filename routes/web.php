@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjaxApiController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
@@ -61,6 +62,7 @@ Route::prefix('/')->group(function () {
   // Route::get('sales/return', [SalesController::class, 'return']);
   Route::resource('/inventory', InventoryController::class);
   Route::resource('/supplier', SupplierController::class);
+  Route::resource('/customer', CustomerController::class);
 });
 
 

@@ -7,15 +7,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header pb-0 ">
-                        <h4 class="card-title mb-0 ">Create a supplier record</h4>
+                        <h4 class="card-title mb-0 ">Add Customer</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{ route('supplier.store') }}">
+                            <form class="form" method="post" action="{{ route('customer.store') }}">
                                 @csrf
                                 <div class="row gy-2">
                                     <div class="col-6">
-                                        <x-forms.input name="name" label="Supplier Name" placeholder="What is the name of supplier?"
+                                        <x-forms.input name="name" label="Customer Name" placeholder="What is the name of customer?"
                                             value="{{ old('name') }}" />
                                     </div>
                                     <div class="col-6">
@@ -31,7 +31,7 @@
                                             value="{{ old('address') }}" />
                                     </div>
                                     <div class=" mt-3 ">
-                                        <button type="submit" class=" btn btn-success w-100 ">Create Supplier</button>
+                                        <button type="submit" class=" btn btn-success w-100 ">Create Customer</button>
                                     </div>
                                 </div>
                             </form>

@@ -18,17 +18,17 @@
             </tr>
         </thead>
         <tbody>
-           @foreach ($suppliers as $supplier )
+           @foreach ($customers as $customer )
                <tr>
-                <td>{{ $supplier->id }}</td>
-                <td>{{ $supplier->name }}</td>
-                <td>{{ $supplier->email }}</td>
-                <td>{{ $supplier->phone }}</td>
+                <td>{{ $customer->id }}</td>
+                <td>{{ $customer->name }}</td>
+                <td>{{ $customer->email }}</td>
+                <td>{{ $customer->phone }}</td>
                 <td>
                     <div class=" btn-group">
-                        {{-- <a href="{{ route('supplier.show', $supplier->id)}}" class=" btn btn-primary">View</a> --}}
-                        <a href="{{ route('supplier.edit', $supplier->id )}}" class=" btn btn-secondary ">Edit</a>
-                        <form action="{{ route('supplier.destroy', $supplier->id)}}" method="POST">
+                        <a href="{{ route('customer.show', $customer->id)}}" class=" btn btn-primary">View</a>
+                        <a href="{{ route('customer.edit', $customer->id )}}" class=" btn btn-secondary ">Edit</a>
+                        <form action="{{ route('customer.destroy', $customer->id)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button class=" btn btn-danger">Delete</button>

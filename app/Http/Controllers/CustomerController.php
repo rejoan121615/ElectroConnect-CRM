@@ -21,7 +21,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.customer.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        Customer::create($request->all());
+        return redirect()->route('customer.index')->with('msg', "New customer created");
     }
 
     /**
@@ -37,7 +38,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('pages.customer.show', ['customer' => $customer]);  
     }
 
     /**
@@ -45,7 +46,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('pages.customer.edit', ['customer' => $customer]);
     }
 
     /**
@@ -53,7 +54,10 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $customer->update($request->all());
+
+        return redirect()->route('customer.index')->with(['msg' => 'Customer updated successfully']);
+    
     }
 
     /**
@@ -61,6 +65,9 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return redirect()->route('customer.index')->with(['msg' => 'Customer Deleted', 'alert' => 'fail']); 
+    
     }
 }
