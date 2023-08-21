@@ -13,6 +13,8 @@ use App\Models\PurchasedProduct;
 use App\Models\SaleDetails;
 use App\Models\Sales;
 use App\Models\Supplier;
+use App\Models\Task;
+use App\Models\Tasks;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +36,7 @@ class DatabaseSeeder extends Seeder
         Sales::factory(50)->create();
         SaleDetails::factory(100)->create();
         Supplier::factory(50)->create();
+        Tasks::factory(50)->create();
         
      
      

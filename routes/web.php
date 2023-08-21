@@ -9,6 +9,8 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +65,7 @@ Route::prefix('/')->group(function () {
   Route::resource('/inventory', InventoryController::class);
   Route::resource('/supplier', SupplierController::class);
   Route::resource('/customer', CustomerController::class);
+  Route::resource('/task', TasksController::class);
 });
 
 

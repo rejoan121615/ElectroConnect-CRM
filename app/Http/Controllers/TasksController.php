@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Tasks;
+use App\Http\Requests\StoreTasksRequest;
+use App\Http\Requests\UpdateTasksRequest;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('pages.tasks.index', ['incomplete' => Tasks::where('complete',0)->get(),
+         'complete' => Tasks::where('complete', 1)->get()]);
     }
 
     /**
@@ -21,13 +22,13 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.tasks.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskRequest $request)
+    public function store(StoreTasksRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show(Tasks $tasks)
     {
         //
     }
@@ -43,7 +44,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit(Tasks $tasks)
     {
         //
     }
@@ -51,7 +52,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTasksRequest $request, Tasks $tasks)
     {
         //
     }
@@ -59,7 +60,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy(Tasks $tasks)
     {
         //
     }
