@@ -23,17 +23,18 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // "name" => 'required|unique:products,name,except,id',
             "name" => ['required', Rule::unique('products', 'name')],
+            'description' => 'required',
             "category_id" => 'required',
             "brand_id" => 'required',
             "supplier_id" => 'required',
-            "stock_quantity" => 'required',
+            "stock" => 'required',
             "price" => 'required',
             "cost_price" => 'required',
             "weight" => 'required',
             "dimension" => 'required',
-            "image_url" => ['required', 'image','mimes:jpg,png,jped','max:1024']
+            "tags" => 'required',
+            "image" => ['required', 'image','mimes:jpg,png,jped','max:1024']
         ];
     }
 }

@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'category_id', 'brand_id', 'price', 'cost_price', 'stock_quantity', 'image_url', 'specifications', 'availability','weight', 'dimensions', 'supplier_id', 'supplier_product_id', 'tags'];
+    protected $fillable = ['name', 'description', 'category_id', 'brand_id', 'price', 'cost_price', 'stock', 'image', 'specifications', 'availability','weight', 'dimensions', 'supplier_id', 'tags'];
 
 
     public function category():BelongsTo {
@@ -22,4 +22,7 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
     
+    public function supplier():BelongsTo {
+        return $this->belongsTo(Supplier::class);
+    }
 }

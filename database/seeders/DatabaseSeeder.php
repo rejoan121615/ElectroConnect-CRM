@@ -26,17 +26,17 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Product::factory(50)->create();
         Category::factory(50)->create();
         Brand::factory(50)->create();
         Customer::factory(50)->create();
-
+        Supplier::factory(50)->create();
+        Product::factory(50)->create();
+        
         CustomerTransection::factory(50)->create();
         PurchasedProduct::factory(50)->create();
         Sales::factory(50)->create();
-        SaleDetails::factory(100)->create();
-        Supplier::factory(50)->create();
         Tasks::factory(10)->create();
+        SaleDetails::factory(100)->create();
         
      
      

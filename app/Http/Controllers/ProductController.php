@@ -40,8 +40,8 @@ class ProductController extends Controller
         // try {
             $formData = $request->all();
             // upload files 
-            if ($request->has('image_url')) {
-                $formData['image_url'] = $request->file('image_url')->store('products', 'public');
+            if ($request->has('image')) {
+                $formData['image'] = $request->file('image')->store('products', 'public');
             }
             // create product 
            $newProduct = Product::create($formData);

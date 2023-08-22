@@ -61,7 +61,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <x-forms.input name="stock_quantity" label="Stock Quantity" />
+                                        <x-forms.input name="stock" label="Stock Quantity" />
 
                                     </div>
                                     <div class="col-md-4">
@@ -81,7 +81,7 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        <x-forms.input type="file" name="image_url" label="Product Image"
+                                        <x-forms.input type="file" name="image" label="Product Image"
                                             error="Image upload fail (make sure it's JPG/PNG/JPEG) and smaller then 4Mb" />                                    </div>
                                     <div class="col-md-12">
                                         <x-forms.input name="tags" label="Write Your Tags" />
