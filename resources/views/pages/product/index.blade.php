@@ -32,7 +32,7 @@
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->brand_id }}</td>
-                                <td>{{ $product->stock_quantity }}</td>
+                                <td>{{ $product->stock }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>
                                     <div class=" btn-group">

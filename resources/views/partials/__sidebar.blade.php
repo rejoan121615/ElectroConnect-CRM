@@ -214,52 +214,52 @@
                 //     'active' => false,
                 //     'url' => '/task/create',
                 // ],
-                [
-                    'name' => 'Chats',
-                    'icon' => '<i class="bi bi-wechat"></i>',
-                    'active' => false,
-                    'url' => '/task/chat',
-                ],
-                [
-                    'name' => 'Calendar',
-                    'icon' => '<i class="bi bi-calendar2"></i>',
-                    'active' => false,
-                    'url' => '/task/calendar',
-                ],
+                // [
+                //     'name' => 'Chats',
+                //     'icon' => '<i class="bi bi-wechat"></i>',
+                //     'active' => false,
+                //     'url' => '/task/chat',
+                // ],
+                // [
+                //     'name' => 'Calendar',
+                //     'icon' => '<i class="bi bi-calendar2"></i>',
+                //     'active' => false,
+                //     'url' => '/task/calendar',
+                // ],
             ],
         ],
-        [
-            'name' => 'Reports',
-            'icon' => '  <i class="bi bi-cart4"></i>',
-            'active' => false,
-            'url' => '/reports',
-            'child' => [
-                [
-                    'name' => 'Sale Reports',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/reports/add',
-                ],
-                [
-                    'name' => 'Inventory Reports',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/reports/edit',
-                ],
-                [
-                    'name' => 'Customer Reports',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/reports/catagory',
-                ],
-                [
-                    'name' => 'Custom Reports',
-                    'icon' => '<i class="bi bi-grid-fill"></i>',
-                    'active' => false,
-                    'url' => '/reports/brands',
-                ],
-            ],
-        ],
+        // [
+        //     'name' => 'Reports',
+        //     'icon' => '  <i class="bi bi-cart4"></i>',
+        //     'active' => false,
+        //     'url' => '/reports',
+        //     'child' => [
+        //         [
+        //             'name' => 'Sale Reports',
+        //             'icon' => '<i class="bi bi-grid-fill"></i>',
+        //             'active' => false,
+        //             'url' => '/reports/add',
+        //         ],
+        //         [
+        //             'name' => 'Inventory Reports',
+        //             'icon' => '<i class="bi bi-grid-fill"></i>',
+        //             'active' => false,
+        //             'url' => '/reports/edit',
+        //         ],
+        //         [
+        //             'name' => 'Customer Reports',
+        //             'icon' => '<i class="bi bi-grid-fill"></i>',
+        //             'active' => false,
+        //             'url' => '/reports/catagory',
+        //         ],
+        //         [
+        //             'name' => 'Custom Reports',
+        //             'icon' => '<i class="bi bi-grid-fill"></i>',
+        //             'active' => false,
+        //             'url' => '/reports/brands',
+        //         ],
+        //     ],
+        // ],
     ];
 
     

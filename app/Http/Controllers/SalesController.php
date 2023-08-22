@@ -81,6 +81,8 @@ class SalesController extends Controller
                 'price' => $grabbedProduct->price,
                 'cost_price' => $grabbedProduct->cost_price
             ]);
+            // update grabbed product 
+            $grabbedProduct->update(["stock" => ($grabbedProduct->stock - $productQuantity)]);
         }
 
 
