@@ -28,10 +28,9 @@ class StoreProductRequest extends FormRequest
             "category_id" => 'required',
             "brand_id" => 'required',
             "supplier_id" => 'required',
-            "supplier_product_id" => 'required',
+            "stock_quantity" => 'required',
             "price" => 'required',
             "cost_price" => 'required',
-            "stock_quantity" => 'required',
             "weight" => 'required',
             "dimension" => 'required',
             "image_url" => ['required', 'image','mimes:jpg,png,jped','max:1024']

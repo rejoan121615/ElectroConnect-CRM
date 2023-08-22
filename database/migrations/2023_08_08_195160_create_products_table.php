@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('brand_id');
             $table->decimal('price', 10, 2);
             $table->decimal('cost_price', 10, 2)->nullable();
             $table->integer('stock_quantity')->default(0);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('specifications')->nullable();
             $table->boolean('availability')->default(true);
             $table->decimal('weight', 10, 2)->nullable();
-            $table->string('dimensions')->nullable();
+            $table->string('dimension')->nullable();
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->string('supplier_product_id')->nullable();
             $table->text('tags')->nullable();

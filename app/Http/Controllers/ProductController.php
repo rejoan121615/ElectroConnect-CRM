@@ -7,6 +7,9 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Supplier;
 
 // use carbon
 
@@ -25,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.product.create');
+        return view('pages.product.create', ['categories' => Category::all(), 'brands' => Brand::all(), 'suppliers' => Supplier::all()]);
     }
 
     /**
@@ -34,18 +37,19 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
 
-        try {
+        // try {
             $formData = $request->all();
             // upload files 
             if ($request->has('image_url')) {
                 $formData['image_url'] = $request->file('image_url')->store('products', 'public');
             }
             // create product 
-            Product::create($formData);
+           $newProduct = Product::create($formData);
+            
             return redirect('product')->with(['msg' => 'New product added']);
-        } catch (\Exception $e) {
-            return back()->withInput()->with(['msg' => "Creation failed"]);
-        }
+        // } catch (\Exception $e) {
+        //     return back()->withInput()->with(['msg' => "Creation failed"]);
+        // }
     }
 
     /**
@@ -53,7 +57,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        dd($product);
+        // dd($product);
         return view('pages.product.show', ['product' => $product]);
     }
 
@@ -63,7 +67,9 @@ class ProductController extends Controller
     // public function edit(Product $product)
     public function edit(Product $product)
     {
-        return view('pages.product.edit', ['product' => $product]);
+        // dd($product);
+        return view('pages.product.edit', ['categories' => Category::all(), 'brands' => Brand::all(), 
+          'suppliers' => Supplier::all(), 'product' => $product]);
     }
 
     /**
@@ -71,10 +77,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        // dd('hello rejoan');
         // dd($product);
         $formData = $request->all();
 
-        // store image 
+        // // store image 
         if ($request->has('image_url')) {
             $formData['image_url'] = $request->file('image_url')->store('products', 'public');
         }
