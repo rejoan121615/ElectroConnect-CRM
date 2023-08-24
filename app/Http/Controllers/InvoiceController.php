@@ -72,10 +72,8 @@ class InvoiceController extends Controller
      */
 
     public function download ($id) {
-        // $sale = Sales::find($id);
-        // dd($sale->getAttributes());
-        // return view('invoice.invoice');
-        // $pdf = Pdf::loadView('invoice.invoice');
-        // return $pdf->download('invoice.pdf');
+        $sale = Sales::find($id);
+        $pdf = Pdf::loadView('invoice.invoice', ['sale' => $sale]);
+       return $pdf->download(date('d-m-Y').' Invoice.pdf');
     }
 }

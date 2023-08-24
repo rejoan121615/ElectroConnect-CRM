@@ -123,7 +123,6 @@
             <a href="{{ route('invoice.index') }}" class=" btn btn-danger"><i class="bi bi-chevron-left me-2 "></i> Back</a>
         </div>
         <div class="col-6 text-end ">
-            <a href="" class=" btn btn-primary me-4 ">Print <i class="bi bi-printer ms-2 "></i></a>
             <a href="{{ route('invoice.download', $sale->id) }}" class=" btn btn-success ">Download <i
                     class="bi bi-download ms-2 "></i></a>
         </div>
@@ -179,8 +178,8 @@
                             <thead class="card-header">
                                 <tr>
                                     <th>Item No</th>
-                                    <th class="col-4">Product Name</th>
-                                    <th class="col-2 text-center">Rate Per Piece</th>
+                                    <th class="col-4">Description</th>
+                                    <th class="col-2 text-center">Rate</th>
                                     <th class="col-1 text-center">QTY</th>
                                     <th class="col-2 text-end">Amount</th>
                                 </tr>

@@ -120,60 +120,48 @@
         </header>
         <main>
             <div class="row">
-                <div class="col-sm-6"><strong>Date:</strong> 05/12/2020</div>
-                <div class="col-sm-6 text-end"><strong>Invoice No:</strong> 16835</div>
+                @php
+                    $dateTime = new DateTime($sale->created_at);
+                    $formattedDate = $dateTime->format('d/m/Y');
+                @endphp
+                <div class=" col-6 "><strong>Date:</strong> {{ $formattedDate }} </div>
+                <div class="col-6 text-end">
+                    <div>
+                        <strong>Invoice No:</strong> {{ $sale->id }}
+                    </div>
+                </div>
             </div>
             
             <table>
                 <tr>
                     <td>
                         <strong>Pay To:</strong>
-                        <address>
-                            Koice Inc<br>
-                            2705 N. Enterprise St<br>
-                            Orange, CA 92865<br>
-                            contact@koiceinc.com
-                        </address>
+                    <address>
+                        ElectroConnects Shop<br>
+                        info@electro-connect.com<br>
+                        +8801648957868 <br>
+                        Road-5, BLock-C, Section-6<br>
+                        Mirpur-1216, Dhaka<br>
+                    </address>
                     </td>
                     <td class=" text-right">
                         <strong>Invoiced To:</strong>
                         <address>
-                            Smith Rhodes<br>
-                            15 Hodges Mews, High Wycombe<br>
-                            HP12 3JL<br>
-                            United Kingdom
+                            {{ $sale->customer->name }}<br>
+                            {{ $sale->customer->phone }}<br>
+                            {{ $sale->customer->email }}<br>
+                            {{ $sale->customer->address }}<br>
                         </address>
                     </td>
                 </tr>
             </table>
-            {{-- <div class="row my-2 ">
-                <div class="col-sm-6">
-                    <strong>Pay To:</strong>
-                    <address>
-                        Koice Inc<br>
-                        2705 N. Enterprise St<br>
-                        Orange, CA 92865<br>
-                        contact@koiceinc.com
-                    </address>
-                </div>
-                <div class="col-sm-6 invoice-to">
-                    <strong>Invoiced To:</strong>
-                    <address>
-                        Smith Rhodes<br>
-                        15 Hodges Mews, High Wycombe<br>
-                        HP12 3JL<br>
-                        United Kingdom
-                    </address>
-                </div>
-            </div> --}}
-
             <div class="card">
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="card-header">
                                 <tr>
-                                    <th>Item No</th>
+                                    <th colspan="3">Item No</th>
                                     <th class="col-4">Description</th>
                                     <th class="col-2 text-center">Rate</th>
                                     <th class="col-1 text-center">QTY</th>
@@ -181,40 +169,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="col-5 text-1">Creating a website design</td>
-                                    <td class="col-2 text-center">$50.00</td>
-                                    <td class="col-1 text-center">10</td>
-                                    <td class="col-2 text-end">$500.00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="text-1">Website Development</td>
-                                    <td class="text-center">$120.00</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-end">$1200.00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="text-1">Optimize the site for search engines (SEO)</td>
-                                    <td class="text-center">$450.00</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-end">$450.00</td>
-                                </tr>
+                                @foreach ($sale->sale_details as $serial=>$item )
+                                    <tr>
+                                        <td colspan="3">{{ $serial + 1 }}</td>
+                                        <td class="col-5 text-1">{{ $item->products->name }}</td>
+                                        <td class="col-2 text-center">{{ $item->price }}</td>
+                                        <td class="col-1 text-center">{{ $item->quantity }}</td>
+                                        <td class="col-2 text-end">{{ $item->quantity * $item->price }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tfoot class="card-footer">
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td colspan="4" class="text-end"><strong>Sub Total:</strong></td>
-                                    <td class="text-end">$2150.00</td>
+                                    <td class="text-end">{{ $sale->paid_amount }} Tk</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4" class="text-end"><strong>Tax:</strong></td>
-                                    <td class="text-end">$215.00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="4" class="text-end"><strong>Tax (0%):</strong></td>
+                                    <td class="text-end">0.00 Tk</td>
                                 </tr>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td colspan="4" class="text-end border-bottom-0"><strong>Total:</strong></td>
-                                    <td class="text-end border-bottom-0">$2365.00</td>
+                                    <td class="text-end border-bottom-0">{{ $sale->paid_amount }} Tk</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -230,5 +212,4 @@
         </footer>
     </div>
 </body>
-
 </html>
