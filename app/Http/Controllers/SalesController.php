@@ -94,7 +94,7 @@ class SalesController extends Controller
      */
     public function show(Sales $sales)
     {
-        //
+        // return view('pages.sales.show');
     }
 
     /**
@@ -168,12 +168,5 @@ class SalesController extends Controller
         return redirect()->route('sales.index')->with(['msg' => 'Deleted successfully', 'alert' => 'alert-danger']);
     }
 
-    /**
-     * Show all Invoices
-     */
-
-     public function invoice() {
-        // dd('hello');
-        return view('pages.sales.invoices', ['sales' => Sales::all()]);
-     }
+    
 }

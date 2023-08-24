@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sales;
 use App\Models\Invoice;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 
@@ -13,8 +16,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        
-        return view('pages.sales.invoices');
+        return view('pages.sales.invoices', ['sales' => Sales::all()]);
     }
 
     /**
@@ -36,9 +38,9 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Invoice $invoice)
+    public function show()
     {
-        //
+        return view('pages.invoice.show');
     }
 
     /**
@@ -63,5 +65,17 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+    }
+
+    /**
+     * download invoice
+     */
+
+    public function download () {
+        // $pdf = Pdf::loadHTML('<h1>Hello Mohd Rejoan</h1>');
+        // return $pdf->stream('invoice.pdf');
+        // return view('invoice.invoice');
+        $pdf = Pdf::loadView('invoice.invoice');
+        return $pdf->stream('invoice.pdf');
     }
 }

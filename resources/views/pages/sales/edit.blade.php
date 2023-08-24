@@ -7,6 +7,9 @@
 
 @section('content')
     <section>
+        <div class=" mb-4">
+            <a href="{{ route('sales.index')}}" class=" btn btn-danger ">Back</a>
+        </div>
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
