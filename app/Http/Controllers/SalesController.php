@@ -94,7 +94,7 @@ class SalesController extends Controller
      */
     public function show(Sales $sales)
     {
-        // return view('pages.sales.show');
+        return view('pages.sales.show');
     }
 
     /**

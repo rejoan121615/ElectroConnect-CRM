@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
+
         .container-fluid {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
         }
+
         header {
             border-bottom: 1px solid #ccc;
             margin-bottom: 20px;
@@ -19,25 +22,31 @@
             justify-content: space-between;
             align-items: center;
         }
+
         header img {
             max-width: 150px;
         }
+
         main {
             /* border-bottom: 1px solid #ccc; */
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
+
         .row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
         }
+
         strong {
             font-weight: bold;
         }
+
         address {
             font-style: normal;
         }
+
         .card {
             border: none;
             border-radius: 0;
@@ -45,52 +54,60 @@
             overflow: hidden;
             margin-bottom: 20px;
         }
+
         .card-header {
             background-color: #f8f8f8;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             border-bottom: 1px solid #ccc;
             text-align: left;
         }
+
         th {
             font-weight: bold;
         }
+
         .text-center {
             text-align: center;
         }
+
         .text-end {
             text-align: right;
         }
+
         .card-footer {
             background-color: #f8f8f8;
             font-weight: bold;
         }
+
         footer {
             border-top: 1px solid #ccc;
             padding-top: 10px;
             font-size: 14px;
         }
+
         .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .invoice-to {
-            /* text-align: right; */
-            /* float: right; */
+        .text-right {
+            text-align: right;
         }
-        /* .my-2 {
-            margin-top: 25px;
-            margin-bottom: 40px;
-        } */
+
+
     </style>
 </head>
+
 <body>
     <div class="container-fluid invoice-container">
         <header>
@@ -106,7 +123,30 @@
                 <div class="col-sm-6"><strong>Date:</strong> 05/12/2020</div>
                 <div class="col-sm-6 text-end"><strong>Invoice No:</strong> 16835</div>
             </div>
-            <div class="row my-2 " style=" display: flex">
+            
+            <table>
+                <tr>
+                    <td>
+                        <strong>Pay To:</strong>
+                        <address>
+                            Koice Inc<br>
+                            2705 N. Enterprise St<br>
+                            Orange, CA 92865<br>
+                            contact@koiceinc.com
+                        </address>
+                    </td>
+                    <td class=" text-right">
+                        <strong>Invoiced To:</strong>
+                        <address>
+                            Smith Rhodes<br>
+                            15 Hodges Mews, High Wycombe<br>
+                            HP12 3JL<br>
+                            United Kingdom
+                        </address>
+                    </td>
+                </tr>
+            </table>
+            {{-- <div class="row my-2 ">
                 <div class="col-sm-6">
                     <strong>Pay To:</strong>
                     <address>
@@ -125,7 +165,7 @@
                         United Kingdom
                     </address>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="card">
                 <div class="card-body p-0">
@@ -183,9 +223,12 @@
             </div>
         </main>
         <footer class="text-center mt-4">
-            <p class="text-start mb-1"><strong>Description :</strong> This is computer generated receipt and does not require physical signature.</p>
-            <p class="text-start"><strong>Note :</strong> This is computer generated receipt and does not require physical signature.</p>
+            <p class="text-start mb-1"><strong>Description :</strong> This is computer generated receipt and does not
+                require physical signature.</p>
+            <p class="text-start"><strong>Note :</strong> This is computer generated receipt and does not require
+                physical signature.</p>
         </footer>
     </div>
 </body>
+
 </html>

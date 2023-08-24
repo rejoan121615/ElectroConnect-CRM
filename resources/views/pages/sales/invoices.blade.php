@@ -32,7 +32,7 @@
                                 <td>
                                     {{-- <button class=" btn btn-primary ">Print</button> --}}
                                     <a href="{{ route('invoice.show', $sale->id) }}" class=" btn btn-primary ">View</a>
-                                    <a href="{{ route('invoice.download')}}" class=" btn btn-success ">Download <i class="bi bi-download ms-2 "></i></a>
+                                    <a href="{{ route('invoice.download', $sale->id) }}" class=" btn btn-success ">Download <i class="bi bi-download ms-2 "></i></a>
                                 </td>
                             </tr>                                
                             @endforeach

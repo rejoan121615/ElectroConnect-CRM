@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+<div class="row">
+    <div class="col">
+        <a href="{{ route('sales.index') }}" class=" btn btn-danger">Back</a>
+    </div>
+</div>
     <h1>Full Sale details</h1>
 @endsection
 

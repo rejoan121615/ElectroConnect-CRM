@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::resource('product', ProductController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('brand', BrandController::class);
-Route::get('sales/invoice/download', [InvoiceController::class, 'download'])->name('invoice.download');
+Route::get('sales/invoice/download/{id}', [InvoiceController::class, 'download'])->name('invoice.download');
 Route::resource('sales/invoice', InvoiceController::class);
 Route::resource('sales', SalesController::class);
 Route::resource('/inventory', InventoryController::class);
