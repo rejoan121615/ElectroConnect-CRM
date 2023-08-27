@@ -12,7 +12,7 @@
                         </div>
                     </button>
                     <ul class="dropdown-menu border border-1 border-secondary  ">
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="{{ route('profile.edit')}}">
                                 <span style=" width: 1.2rem; margin-right: 5px; ">
                                     <i class="bi bi-person-circle"></i>
                                 </span>
@@ -21,7 +21,7 @@
                                     style=" width: 1.2rem; margin-right: 5px; "><i class="bi bi-gear-fill"></i></span>
                                 Setting</a></li>
                         <li>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('logout')}}">
                                 @csrf
                                 <button class=" dropdown-item">
                                     <span style=" width: 1.2rem; margin-right: 5px; "><i
