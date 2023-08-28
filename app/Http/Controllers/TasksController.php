@@ -13,7 +13,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        return view('pages.tasks.index', ['incomplete' => Tasks::where('complete',0)->get(),
+        return view('pages.tasks_meeting.index', ['incomplete' => Tasks::where('complete',0)->get(),
          'complete' => Tasks::where('complete', 1)->get()]);
     }
 
