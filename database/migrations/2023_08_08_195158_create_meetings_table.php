@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->dateTime('date_time')->nullable();
-            $table->string('location')->nullable();
-            $table->text('attendees')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('supplier_id');
+            $table->string('date');
+            $table->string('time');
             $table->timestamps();
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 

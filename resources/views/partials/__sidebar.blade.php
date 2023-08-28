@@ -203,29 +203,18 @@
             'url' => '/task',
             'child' => [
                 [
-                    'name' => 'Task List',
+                    'name' => 'Meeting List',
                     'icon' => '<i class="bi bi-card-list"></i>',
                     'active' => false,
-                    'url' => '/task',
+                    'url' => '/meeting',
                 ],
-                // [
-                //     'name' => 'New Task',
-                //     'icon' => '<i class="bi bi-plus-circle-fill"></i>',
-                //     'active' => false,
-                //     'url' => '/task/create',
-                // ],
-                // [
-                //     'name' => 'Chats',
-                //     'icon' => '<i class="bi bi-wechat"></i>',
-                //     'active' => false,
-                //     'url' => '/task/chat',
-                // ],
-                // [
-                //     'name' => 'Calendar',
-                //     'icon' => '<i class="bi bi-calendar2"></i>',
-                //     'active' => false,
-                //     'url' => '/task/calendar',
-                // ],
+                [
+                    'name' => 'Create Meeting',
+                    'icon' => '<i class="bi bi-plus-circle-fill"></i>',
+                    'active' => false,
+                    'url' => '/meeting/create',
+                ],
+                
             ],
         ],
         // [
@@ -307,7 +296,7 @@
                 </div>
             </div>
         </div>
-        <div class="sidebar-menu">
+        <div class="sidebar-menu mb-5 ">
             <ul class="menu">
                 {{-- navigation items  --}}
                 @foreach ($navItems as $nav)

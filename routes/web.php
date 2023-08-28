@@ -1,7 +1,19 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\TasksController;
+use App\Http\Controllers\AjaxApiController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\MeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +37,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
 
+
+  Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
   // profile 
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -34,10 +49,6 @@ Route::middleware('auth')->group(function () {
   Route::get('sales/customers', [SalesController::class, 'customers']);
 
 
-
-  Route::get('/', function () {
-    return view('pages.home');
-  })->name('dashboard');
   Route::resource('product', ProductController::class);
   Route::resource('category', CategoryController::class);
   Route::resource('brand', BrandController::class);
@@ -47,6 +58,7 @@ Route::middleware('auth')->group(function () {
   Route::resource('/inventory', InventoryController::class);
   Route::resource('/supplier', SupplierController::class);
   Route::resource('/customer', CustomerController::class);
+  Route::resource('/meeting', MeetingController::class);
   Route::resource('/task', TasksController::class);
 
 
